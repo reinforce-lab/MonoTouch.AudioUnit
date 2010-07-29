@@ -1,0 +1,360 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* ExtAudioAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {946, 854}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 473}";
+		};
+	};
+	1D3623250D0F684500981E51 /* ExtAudioAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1018, 935}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 611}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* ExtAudio */ = {
+		activeExec = 0;
+		executables = (
+			D91884B40FEC9CC500FCC0EF /* ExtAudio */,
+		);
+	};
+	28D7ACF60DDB3853001CB0EB /* ExtAudioViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1043, 1011}}";
+			sepNavSelRange = "{511, 0}";
+			sepNavVisRange = "{0, 511}";
+			sepNavWindowFrame = "{{38, 691}, {808, 861}}";
+		};
+	};
+	28D7ACF70DDB3853001CB0EB /* ExtAudioViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1043, 1018}}";
+			sepNavSelRange = "{666, 0}";
+			sepNavVisRange = "{0, 1459}";
+			sepNavWindowFrame = "{{721, 283}, {1288, 1295}}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = D91884B40FEC9CC500FCC0EF /* ExtAudio */;
+		activeSDKPreference = iphoneos3.0;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* ExtAudio */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* ExtAudio */,
+		);
+		breakpoints = (
+		);
+		codeSenseManager = D91884BC0FEC9CE400FCC0EF /* Code sense */;
+		executables = (
+			D91884B40FEC9CC500FCC0EF /* ExtAudio */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXErrorsWarningsDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXErrorsWarningsDataSource_LocationID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					300,
+					755,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXErrorsWarningsDataSource_TypeID,
+					PBXErrorsWarningsDataSource_MessageID,
+					PBXErrorsWarningsDataSource_LocationID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					865,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.XCSCMDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					20,
+					816,
+					20,
+					48.16259765625,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_SCM_ColumnID,
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 279124318;
+			PBXWorkspaceStateSaveDate = 279124318;
+		};
+		perUserProjectItems = {
+			D93C15FB105D2F2500FDD864 /* PBXTextBookmark */ = D93C15FB105D2F2500FDD864 /* PBXTextBookmark */;
+			D93C15FC105D2F2500FDD864 /* PBXTextBookmark */ = D93C15FC105D2F2500FDD864 /* PBXTextBookmark */;
+			D93C162E105D302800FDD864 /* PBXTextBookmark */ = D93C162E105D302800FDD864 /* PBXTextBookmark */;
+			D93C162F105D302800FDD864 /* PBXTextBookmark */ = D93C162F105D302800FDD864 /* PBXTextBookmark */;
+			D98DA4350FECB23000F51B41 /* PBXTextBookmark */ = D98DA4350FECB23000F51B41 /* PBXTextBookmark */;
+			D98DA44C0FECB2ED00F51B41 /* PBXTextBookmark */ = D98DA44C0FECB2ED00F51B41 /* PBXTextBookmark */;
+			D9B2FBE910A31B1E00855A6E /* PBXTextBookmark */ = D9B2FBE910A31B1E00855A6E /* PBXTextBookmark */;
+			D9B2FBEA10A31B1E00855A6E /* PBXTextBookmark */ = D9B2FBEA10A31B1E00855A6E /* PBXTextBookmark */;
+			D9D1829D100C351E00645B5B /* PBXTextBookmark */ = D9D1829D100C351E00645B5B /* PBXTextBookmark */;
+			D9DF074B102170A500C0AC32 /* PBXTextBookmark */ = D9DF074B102170A500C0AC32 /* PBXTextBookmark */;
+			D9DF088B1021975700C0AC32 /* PBXTextBookmark */ = D9DF088B1021975700C0AC32 /* PBXTextBookmark */;
+		};
+		sourceControlManager = D91884BB0FEC9CE400FCC0EF /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {929, 335}}";
+			sepNavSelRange = "{251, 0}";
+			sepNavVisRange = "{0, 350}";
+		};
+	};
+	32CA4F630368D1EE00C91783 /* ExtAudio_Prefix.pch */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {946, 854}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 185}";
+		};
+	};
+	D91884B40FEC9CC500FCC0EF /* ExtAudio */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = ExtAudio;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+			$lr = 1;
+			$pc = 1;
+			$r0 = 1;
+			$r1 = 1;
+			$r10 = 1;
+			$r11 = 1;
+			$r12 = 1;
+			$r2 = 1;
+			$r3 = 1;
+			$r4 = 1;
+			$r5 = 1;
+			$r6 = 1;
+			$r7 = 1;
+			$r8 = 1;
+			$r9 = 1;
+			$sp = 1;
+			"err-OSStatus--[AUAudioFilePlayer prepareExtAudio:]" = 5;
+		};
+	};
+	D91884BB0FEC9CE400FCC0EF /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	D91884BC0FEC9CE400FCC0EF /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	D92B9A6C0FED3B5100113B40 /* RemoteInputRecording.m */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.objc;
+		name = RemoteInputRecording.m;
+		path = "/Users/nagano/Dropbox/PhonoCam/AudibleCamera 2.2.1 submitted 20090512/Classes/RemoteInputRecording.m";
+		sourceTree = "<absolute>";
+	};
+	D93C15FB105D2F2500FDD864 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D9DF08801021962F00C0AC32 /* iPhoneCoreAudio.m */;
+		name = "iPhoneCoreAudio.m: 40";
+		rLen = 0;
+		rLoc = 1532;
+		rType = 0;
+		vrLen = 1532;
+		vrLoc = 0;
+	};
+	D93C15FC105D2F2500FDD864 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D9DF08811021962F00C0AC32 /* iPhoneCoreAudio.h */;
+		name = "iPhoneCoreAudio.h: 16";
+		rLen = 0;
+		rLoc = 489;
+		rType = 0;
+		vrLen = 489;
+		vrLoc = 0;
+	};
+	D93C162E105D302800FDD864 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D98DA4320FECB1BD00F51B41 /* ExtAudioFilePlayer.m */;
+		name = "ExtAudioFilePlayer.m: 23";
+		rLen = 0;
+		rLoc = 484;
+		rType = 0;
+		vrLen = 1878;
+		vrLoc = 3114;
+	};
+	D93C162F105D302800FDD864 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF60DDB3853001CB0EB /* ExtAudioViewController.h */;
+		name = "ExtAudioViewController.h: 26";
+		rLen = 0;
+		rLoc = 511;
+		rType = 0;
+		vrLen = 511;
+		vrLoc = 0;
+	};
+	D98DA4310FECB1BD00F51B41 /* ExtAudioFilePlayer.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {858, 695}}";
+			sepNavSelRange = "{663, 0}";
+			sepNavVisRange = "{0, 773}";
+			sepNavWindowFrame = "{{15, 765}, {917, 808}}";
+		};
+	};
+	D98DA4320FECB1BD00F51B41 /* ExtAudioFilePlayer.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1043, 2756}}";
+			sepNavSelRange = "{484, 0}";
+			sepNavVisRange = "{2458, 2254}";
+			sepNavWindowFrame = "{{416, 348}, {1159, 1230}}";
+		};
+	};
+	D98DA4350FECB23000F51B41 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* ExtAudioAppDelegate.h */;
+		name = "ExtAudioAppDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 473;
+		vrLoc = 0;
+	};
+	D98DA44C0FECB2ED00F51B41 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32CA4F630368D1EE00C91783 /* ExtAudio_Prefix.pch */;
+		name = "ExtAudio_Prefix.pch: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 185;
+		vrLoc = 0;
+	};
+	D9B2FBE910A31B1E00855A6E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* ExtAudioViewController.m */;
+		name = "ExtAudioViewController.m: 21";
+		rLen = 0;
+		rLoc = 666;
+		rType = 0;
+		vrLen = 1459;
+		vrLoc = 0;
+	};
+	D9B2FBEA10A31B1E00855A6E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D98DA4320FECB1BD00F51B41 /* ExtAudioFilePlayer.m */;
+		name = "ExtAudioFilePlayer.m: 23";
+		rLen = 0;
+		rLoc = 484;
+		rType = 0;
+		vrLen = 2254;
+		vrLoc = 2458;
+	};
+	D9D1829D100C351E00645B5B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D98DA4310FECB1BD00F51B41 /* ExtAudioFilePlayer.h */;
+		name = "ExtAudioFilePlayer.h: 34";
+		rLen = 0;
+		rLoc = 115;
+		rType = 0;
+		vrLen = 773;
+		vrLoc = 0;
+	};
+	D9DF074B102170A500C0AC32 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D92B9A6C0FED3B5100113B40 /* RemoteInputRecording.m */;
+		name = "RemoteInputRecording.m: 460";
+		rLen = 13;
+		rLoc = 11632;
+		rType = 0;
+		vrLen = 1184;
+		vrLoc = 10995;
+	};
+	D9DF08801021962F00C0AC32 /* iPhoneCoreAudio.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1043, 1014}}";
+			sepNavSelRange = "{1532, 0}";
+			sepNavVisRange = "{0, 1532}";
+			sepNavWindowFrame = "{{291, 176}, {1282, 1145}}";
+		};
+	};
+	D9DF08811021962F00C0AC32 /* iPhoneCoreAudio.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1043, 1014}}";
+			sepNavSelRange = "{489, 0}";
+			sepNavVisRange = "{0, 489}";
+			sepNavWindowFrame = "{{15, 404}, {1236, 1169}}";
+		};
+	};
+	D9DF088B1021975700C0AC32 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* ExtAudioAppDelegate.m */;
+		name = "ExtAudioAppDelegate.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 611;
+		vrLoc = 0;
+	};
+}

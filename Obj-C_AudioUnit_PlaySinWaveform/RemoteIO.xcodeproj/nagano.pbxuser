@@ -1,0 +1,234 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* RemoteIOAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {855, 895}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 473}";
+		};
+	};
+	1D3623250D0F684500981E51 /* RemoteIOAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {596, 594}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 611}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* RemoteIO */ = {
+		activeExec = 0;
+		executables = (
+			D9A167AA0FFB66CC004A2EC8 /* RemoteIO */,
+		);
+	};
+	28D7ACF60DDB3853001CB0EB /* RemoteIOViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {596, 574}}";
+			sepNavSelRange = "{286, 0}";
+			sepNavVisRange = "{0, 286}";
+			sepNavWindowFrame = "{{199, 93}, {1646, 1312}}";
+		};
+	};
+	28D7ACF70DDB3853001CB0EB /* RemoteIOViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {596, 594}}";
+			sepNavSelRange = "{215, 251}";
+			sepNavVisRange = "{0, 472}";
+			sepNavWindowFrame = "{{176, 527}, {945, 899}}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = D9A167AA0FFB66CC004A2EC8 /* RemoteIO */;
+		activeSDKPreference = iphoneos3.0;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* RemoteIO */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* RemoteIO */,
+		);
+		codeSenseManager = D9A167B70FFB66DB004A2EC8 /* Code sense */;
+		executables = (
+			D9A167AA0FFB66CC004A2EC8 /* RemoteIO */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXErrorsWarningsDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXErrorsWarningsDataSource_LocationID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					300,
+					308,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXErrorsWarningsDataSource_TypeID,
+					PBXErrorsWarningsDataSource_MessageID,
+					PBXErrorsWarningsDataSource_LocationID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					697,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 279124302;
+			PBXWorkspaceStateSaveDate = 279124302;
+		};
+		perUserProjectItems = {
+			D9A6335610596A99006A1B59 /* PBXTextBookmark */ = D9A6335610596A99006A1B59 /* PBXTextBookmark */;
+			D9B2FC2510A31B7800855A6E /* PBXTextBookmark */ = D9B2FC2510A31B7800855A6E /* PBXTextBookmark */;
+			D9D01FD61003498F0020DCEF /* PBXTextBookmark */ = D9D01FD61003498F0020DCEF /* PBXTextBookmark */;
+			D9D0202610034A4D0020DCEF /* PBXTextBookmark */ = D9D0202610034A4D0020DCEF /* PBXTextBookmark */;
+			D9D0202710034A4D0020DCEF /* PBXTextBookmark */ = D9D0202710034A4D0020DCEF /* PBXTextBookmark */;
+			D9D0202810034A4D0020DCEF /* PBXTextBookmark */ = D9D0202810034A4D0020DCEF /* PBXTextBookmark */;
+			D9DB76A210A3135D00D3EE4E /* PBXTextBookmark */ = D9DB76A210A3135D00D3EE4E /* PBXTextBookmark */;
+		};
+		sourceControlManager = D9A167B60FFB66DB004A2EC8 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	D9A167AA0FFB66CC004A2EC8 /* RemoteIO */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = RemoteIO;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	D9A167B30FFB66DB004A2EC8 /* RemoteOutput.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1587, 1184}}";
+			sepNavSelRange = "{82, 0}";
+			sepNavVisRange = "{0, 371}";
+			sepNavWindowFrame = "{{153, 135}, {1646, 1312}}";
+		};
+	};
+	D9A167B40FFB66DB004A2EC8 /* RemoteOutput.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {875, 1978}}";
+			sepNavSelRange = "{3496, 0}";
+			sepNavVisRange = "{2155, 1696}";
+			sepNavWindowFrame = "{{15, 369}, {1222, 1204}}";
+		};
+	};
+	D9A167B60FFB66DB004A2EC8 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	D9A167B70FFB66DB004A2EC8 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	D9A6335610596A99006A1B59 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF60DDB3853001CB0EB /* RemoteIOViewController.h */;
+		name = "RemoteIOViewController.h: 16";
+		rLen = 0;
+		rLoc = 286;
+		rType = 0;
+		vrLen = 286;
+		vrLoc = 0;
+	};
+	D9B2FC2510A31B7800855A6E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D9A167B40FFB66DB004A2EC8 /* RemoteOutput.m */;
+		name = "RemoteOutput.m: 101";
+		rLen = 0;
+		rLoc = 3496;
+		rType = 0;
+		vrLen = 1696;
+		vrLoc = 2155;
+	};
+	D9D01FD61003498F0020DCEF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* RemoteIOAppDelegate.h */;
+		name = "RemoteIOAppDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 473;
+		vrLoc = 0;
+	};
+	D9D0202610034A4D0020DCEF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* RemoteIOViewController.m */;
+		name = "RemoteIOViewController.m: 13";
+		rLen = 251;
+		rLoc = 215;
+		rType = 0;
+		vrLen = 472;
+		vrLoc = 0;
+	};
+	D9D0202710034A4D0020DCEF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D9A167B30FFB66DB004A2EC8 /* RemoteOutput.h */;
+		name = "RemoteOutput.h: 26";
+		rLen = 0;
+		rLoc = 371;
+		rType = 0;
+		vrLen = 362;
+		vrLoc = 0;
+	};
+	D9D0202810034A4D0020DCEF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* RemoteIOAppDelegate.m */;
+		name = "RemoteIOAppDelegate.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 611;
+		vrLoc = 0;
+	};
+	D9DB76A210A3135D00D3EE4E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D9A167B40FFB66DB004A2EC8 /* RemoteOutput.m */;
+		name = "RemoteOutput.m: 101";
+		rLen = 0;
+		rLoc = 3496;
+		rType = 0;
+		vrLen = 1522;
+		vrLoc = 1250;
+	};
+}

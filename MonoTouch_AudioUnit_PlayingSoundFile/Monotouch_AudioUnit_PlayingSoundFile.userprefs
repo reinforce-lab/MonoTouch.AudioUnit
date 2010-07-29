@@ -1,0 +1,26 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" ctype="Workspace" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../MonoTouch_AudioUnit/AudioUnit.cs" ctype="Workbench">
+    <Files>
+      <File FileName="../MonoTouch_AudioUnit/AudioUnit.cs" Line="110" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="MonoTouch.AudioUnit" expanded="True">
+            <Node name="AudioUnit.cs" selected="True" />
+          </Node>
+          <Node name="Monotouch_AudioUnit_PlayingSoundFile" expanded="True">
+            <Node name="MainView.xib" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/rupppau/AudioUnit_SampleCodes/MonoTouch_AudioUnit_PlayingSoundFile/ExtAudioFilePlayer.cs" line="62" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches ctype="PinnedWatchStore" />
+</Properties>
