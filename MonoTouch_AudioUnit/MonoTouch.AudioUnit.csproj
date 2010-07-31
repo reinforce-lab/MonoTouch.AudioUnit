@@ -82,5 +82,7 @@
     <Compile Include="AudioUnit.cs" />
     <Compile Include="AudioUnitEventArgs.cs" />
     <Compile Include="ExtAudioFile.cs" />
+    <Compile Include="AudioGraphEventArgs.cs" />
+    <Compile Include="AUGraph.cs" />
   </ItemGroup>
 </Project>

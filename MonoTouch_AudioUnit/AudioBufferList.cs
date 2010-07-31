@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-
-namespace MonoTouch.AudioUnitWrapper
+ 
+namespace MonoTouch.AudioToolbox
 {
     [StructLayout(LayoutKind.Sequential)]
     public class AudioBufferList

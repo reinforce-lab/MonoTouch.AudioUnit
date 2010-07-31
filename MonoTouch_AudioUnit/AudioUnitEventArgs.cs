@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MonoTouch.AudioUnitWrapper
+namespace MonoTouch.AudioToolbox
 {
     public class AudioUnitEventArgs : EventArgs
     {

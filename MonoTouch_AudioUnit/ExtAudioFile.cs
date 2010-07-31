@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 
 using MonoTouch.AudioToolbox;
 
-namespace MonoTouch.AudioUnitWrapper
+namespace MonoTouch.AudioToolbox
 {
     public class ExtAudioFile : IDisposable
     {
@@ -96,6 +96,26 @@ namespace MonoTouch.AudioUnitWrapper
             
             return new ExtAudioFile(ptr);
         }
+        public static ExtAudioFile CreateWithURL(MonoTouch.CoreFoundation.CFUrl url, 
+            AudioFileType fileType, AudioStreamBasicDescription inStreamDesc, AudioChannelLayout channelLayout, AudioFileFlags flag)
+        { 
+            int err;
+            IntPtr ptr = new IntPtr();
+            unsafe {                
+                err = ExtAudioFileCreateWithURL(url.Handle, fileType, inStreamDesc, channelLayout, flag,
+                    (IntPtr)(&ptr));
+            }            
+            if (err != 0)
+            {
+                throw new ArgumentException(String.Format("Error code:{0}", err));
+            }
+            if (ptr == IntPtr.Zero)
+            {
+                throw new InvalidOperationException("Can not get object instance");
+            }
+            
+            return new ExtAudioFile(ptr);
+        }
         public void Seek(long frameOffset)
         {
             int err = ExtAudioFileSeek(_extAudioFile, frameOffset);
@@ -126,6 +146,12 @@ namespace MonoTouch.AudioUnitWrapper
 
             return numberFrames;
         }
+        public void WriteAsync(uint numberFrames, AudioBufferList data)
+        {
+            int err = ExtAudioFileWriteAsync(_extAudioFile, numberFrames, data);
+            if (err != 0)
+                throw new ArgumentException(String.Format("Error code:{0}", err));            
+        }
         #endregion
 
         #region IDisposable メンバ
@@ -142,6 +168,9 @@ namespace MonoTouch.AudioUnitWrapper
         [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "ExtAudioFileRead")]
         static extern int ExtAudioFileRead(IntPtr  inExtAudioFile, ref uint ioNumberFrames, AudioBufferList ioData);
 
+        [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "ExtAudioFileWriteAsync")]
+        static extern int ExtAudioFileWriteAsync(IntPtr inExtAudioFile, uint inNumberFrames, AudioBufferList ioData);
+
         [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "ExtAudioFileDispose")]
         static extern int ExtAudioFileDispose(IntPtr inExtAudioFile);
 
@@ -150,6 +179,14 @@ namespace MonoTouch.AudioUnitWrapper
         
         [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "ExtAudioFileTell")]
         static extern int ExtAudioFileTell(IntPtr inExtAudioFile, ref long outFrameOffset);
+
+        [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "ExtAudioFileCreateWithURL")]
+        static extern int ExtAudioFileCreateWithURL(IntPtr inURL,
+            AudioFileType inFileType,
+            AudioStreamBasicDescription inStreamDesc,
+            AudioChannelLayout inChannelLayout,
+            AudioFileFlags flags,
+            IntPtr outExtAudioFile);            
 
         [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "ExtAudioFileGetProperty")]
         static extern int ExtAudioFileGetProperty(
@@ -184,7 +221,8 @@ namespace MonoTouch.AudioUnitWrapper
             IntPtr inExtAudioFile,
             ExtAudioFilePropertyIDType inPropertyID,
             uint ioPropertyDataSize,
-            ref AudioStreamBasicDescription outPropertyData);    
+            ref AudioStreamBasicDescription outPropertyData);
+
 
         enum ExtAudioFilePropertyIDType {                 
 	        kExtAudioFileProperty_FileDataFormat		= 0x66666d74, //'ffmt',   // AudioStreamBasicDescription

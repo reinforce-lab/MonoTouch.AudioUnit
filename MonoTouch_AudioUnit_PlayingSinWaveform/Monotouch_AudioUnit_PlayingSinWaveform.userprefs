@@ -1,21 +1,15 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" ctype="Workspace" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../MonoTouch_AudioUnit/AudioUnit.cs" ctype="Workbench">
+  <MonoDevelop.Ide.Workbench ActiveDocument="RemoteOutput.cs" ctype="Workbench">
     <Files>
-      <File FileName="RemoteOutput.cs" Line="1" Column="1" />
-      <File FileName="../MonoTouch_AudioUnit/AudioUnit.cs" Line="1" Column="1" />
+      <File FileName="RemoteOutput.cs" Line="7" Column="2" />
+      <File FileName="../MonoTouch_AudioUnit/AudioUnit.cs" Line="4" Column="15" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="MonoTouch.AudioUnit" expanded="True" selected="True">
-            <Node name="References" expanded="True" />
-          </Node>
-          <Node name="Monotouch_AudioUnit_PlayingSinWaveform" expanded="True">
-            <Node name="References" expanded="True" />
-            <Node name="MainView.xib" expanded="True" />
-            <Node name="MainWindow.xib" expanded="True" />
-          </Node>
+          <Node name="MonoTouch.AudioUnit" expanded="True" />
+          <Node name="Monotouch_AudioUnit_PlayingSinWaveform" expanded="True" selected="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">

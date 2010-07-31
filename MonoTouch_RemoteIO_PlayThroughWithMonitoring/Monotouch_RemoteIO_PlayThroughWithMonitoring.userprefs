@@ -1,0 +1,31 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" ctype="Workspace" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../MonoTouch_AudioUnit/ExtAudioFile.cs" ctype="Workbench">
+    <Files>
+      <File FileName="RemoteIOPlayThrough.cs" Line="50" Column="10" />
+      <File FileName="Main.cs" Line="4" Column="17" />
+      <File FileName="../MonoTouch_AudioUnit/AudioUnit.cs" Line="109" Column="59" />
+      <File FileName="../MonoTouch_AudioUnit/ExtAudioFile.cs" Line="89" Column="14" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="MonoTouch.AudioUnit" expanded="True" />
+          <Node name="Monotouch_RemoteIO_PlayThroughWithMonitoring" expanded="True" selected="True" />
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>ostype_val</Value>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches ctype="PinnedWatchStore" />
+</Properties>

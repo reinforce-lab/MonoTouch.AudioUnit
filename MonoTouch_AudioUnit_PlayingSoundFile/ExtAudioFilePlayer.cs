@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 
-using MonoTouch.AudioUnitWrapper;
 using MonoTouch.AudioToolbox;
 using MonoTouch.CoreFoundation;
 

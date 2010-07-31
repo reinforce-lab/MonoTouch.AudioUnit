@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoTouch.AudioUnit", "..\MonoTouch_AudioUnit\MonoTouch.AudioUnit.csproj", "{7845765B-C394-4F95-B79A-0CAFCEC73C39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monotouch_RemoteIO_PlayThroughWithMonitoring", "Monotouch_RemoteIO_PlayThroughWithMonitoring.csproj", "{FEAD8552-5EA3-45C8-8DBE-BBA24397671F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7845765B-C394-4F95-B79A-0CAFCEC73C39}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{7845765B-C394-4F95-B79A-0CAFCEC73C39}.Debug|iPhone.Build.0 = Debug|iPhone
+		{7845765B-C394-4F95-B79A-0CAFCEC73C39}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{7845765B-C394-4F95-B79A-0CAFCEC73C39}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{7845765B-C394-4F95-B79A-0CAFCEC73C39}.Release|iPhone.ActiveCfg = Release|iPhone
+		{7845765B-C394-4F95-B79A-0CAFCEC73C39}.Release|iPhone.Build.0 = Release|iPhone
+		{7845765B-C394-4F95-B79A-0CAFCEC73C39}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{7845765B-C394-4F95-B79A-0CAFCEC73C39}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{FEAD8552-5EA3-45C8-8DBE-BBA24397671F}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{FEAD8552-5EA3-45C8-8DBE-BBA24397671F}.Debug|iPhone.Build.0 = Debug|iPhone
+		{FEAD8552-5EA3-45C8-8DBE-BBA24397671F}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{FEAD8552-5EA3-45C8-8DBE-BBA24397671F}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{FEAD8552-5EA3-45C8-8DBE-BBA24397671F}.Release|iPhone.ActiveCfg = Release|iPhone
+		{FEAD8552-5EA3-45C8-8DBE-BBA24397671F}.Release|iPhone.Build.0 = Release|iPhone
+		{FEAD8552-5EA3-45C8-8DBE-BBA24397671F}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{FEAD8552-5EA3-45C8-8DBE-BBA24397671F}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Monotouch_RemoteIO_PlayThroughWithMonitoring.csproj
+	EndGlobalSection
+EndGlobal

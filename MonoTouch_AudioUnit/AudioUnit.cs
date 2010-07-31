@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
 
-namespace MonoTouch.AudioUnitWrapper
+namespace MonoTouch.AudioToolbox
 {
     public class AudioUnit : IDisposable
     {
@@ -15,11 +15,11 @@ namespace MonoTouch.AudioUnitWrapper
 
         #region Properties
         public event EventHandler<AudioUnitEventArgs> RenderCallback;
-        public bool IsPlaying { get { return _isPlaying; } }
+        public bool IsPlaying { get { return _isPlaying; } }      
         #endregion
 
         #region Constructor
-        private AudioUnit(IntPtr handler)
+        public AudioUnit(IntPtr handler)
         {
             _isPlaying = false;
 
@@ -30,12 +30,14 @@ namespace MonoTouch.AudioUnitWrapper
             var callbackStruct = new AURenderCallbackStrct();
             callbackStruct.inputProc = renderCallback; // setting callback function            
             callbackStruct.inputProcRefCon = GCHandle.ToIntPtr(_handle); // a pointer that passed to the renderCallback (IntPtr inRefCon) 
-            AudioUnitSetProperty(_audioUnit,
+            int err = AudioUnitSetProperty(_audioUnit,
                 AudioUnitPropertyIDType.kAudioUnitProperty_SetRenderCallback,
                 AudioUnitScopeType.kAudioUnitScope_Input,                
                 0, // 0 == speaker                
                 callbackStruct,
                 (uint)Marshal.SizeOf(callbackStruct));
+            if (err != 0)
+                throw new ArgumentException(String.Format("Error code: {0}", err));
 
         }
         #endregion
@@ -70,6 +72,54 @@ namespace MonoTouch.AudioUnitWrapper
         }
         #endregion
 
+        #region Setter/Getter
+        public void SetAudioFormat(MonoTouch.AudioToolbox.AudioStreamBasicDescription audioFormat, AudioUnitScopeType scope, uint audioUnitElement)
+        {
+            int err = AudioUnitSetProperty(_audioUnit,
+                AudioUnitPropertyIDType.kAudioUnitProperty_StreamFormat,
+                scope,
+                audioUnitElement, 
+                ref audioFormat,
+                (uint)Marshal.SizeOf(audioFormat));
+            if (err != 0)
+                throw new ArgumentException(String.Format("Error code:{0}", err));
+        }
+        public MonoTouch.AudioToolbox.AudioStreamBasicDescription GetAudioFormat(AudioUnitScopeType scope, uint audioUnitElement)
+        {
+            MonoTouch.AudioToolbox.AudioStreamBasicDescription audioFormat = new AudioStreamBasicDescription();
+            uint size = (uint)Marshal.SizeOf(audioFormat);
+            
+            int err = AudioUnitGetProperty(_audioUnit,
+                AudioUnitPropertyIDType.kAudioUnitProperty_StreamFormat,
+                scope,
+                audioUnitElement,
+                ref audioFormat,
+                ref size);
+            if (err != 0)
+                throw new ArgumentException(String.Format("Error code:{0}", err));
+
+            return audioFormat;
+        }
+        /*
+        public void SetEnableIO(bool enableIO, AudioUnitScopeType scope, uint audioUnitElement)
+        {
+            uint flag = (uint)(enableIO ? 1 : 0);
+            unsafe
+            {
+                int err = AudioUnitSetProperty(_audioUnit,
+                    AudioUnitPropertyIDType.kAudioOutputUnitProperty_EnableIO,
+                    scope,
+                    audioUnitElement,
+                    ref flag,
+                    sizeof(uint));
+                if (err != 0)
+                {
+                    throw new InvalidOperationException(String.Format("Error code:{0}", err));
+                }
+            }
+        }*/
+        #endregion
+
         #region Public methods
         public static AudioUnit CreateInstance(AudioComponent cmp)
         {
@@ -86,17 +136,6 @@ namespace MonoTouch.AudioUnitWrapper
             {
                 return null;
             }
-        }
-        public void SetAudioFormat(AudioUnitScopeType scope, MonoTouch.AudioToolbox.AudioStreamBasicDescription audioFormat )
-        {
-            int err = AudioUnitSetProperty(_audioUnit,
-                AudioUnitPropertyIDType.kAudioUnitProperty_StreamFormat,
-                scope,
-                0, // 0 == speaker
-                ref audioFormat,
-                (uint)Marshal.SizeOf(audioFormat));
-            if (err != 0)
-                throw new ArgumentException(String.Format("Error code:{0}", err));
         }
         public void Start()
         {
@@ -128,7 +167,7 @@ namespace MonoTouch.AudioUnitWrapper
         /// <summary>
         /// AudioUnit call back method declaration
         /// </summary>
-        delegate int AURenderCallback(IntPtr inRefCon,
+        public delegate int AURenderCallback(IntPtr inRefCon,
            ref AudioUnitRenderActionFlags ioActionFlags,
            MonoTouch.AudioToolbox.AudioTimeStamp inTimeStamp,
            uint inBusNumber,
@@ -136,7 +175,7 @@ namespace MonoTouch.AudioUnitWrapper
            AudioBufferList ioData);
 
         [StructLayout(LayoutKind.Sequential)]
-        class AURenderCallbackStrct
+        public class AURenderCallbackStrct
         {
             public AURenderCallback inputProc;
             public IntPtr inputProcRefCon;
@@ -176,8 +215,26 @@ namespace MonoTouch.AudioUnitWrapper
             ref MonoTouch.AudioToolbox.AudioStreamBasicDescription inData,
             uint inDataSize
             );
+        /*
+        [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "AudioUnitSetProperty")]
+        static extern int AudioUnitSetProperty(IntPtr inUnit,
+            [MarshalAs(UnmanagedType.U4)] AudioUnitPropertyIDType inID,
+            [MarshalAs(UnmanagedType.U4)] AudioUnitScopeType inScope,
+            uint inElement,
+            ref uint flag,
+            uint inDataSize
+            );
+        */
+        [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "AudioUnitGetProperty")]
+        static extern int AudioUnitGetProperty(IntPtr inUnit,
+            [MarshalAs(UnmanagedType.U4)] AudioUnitPropertyIDType inID,
+            [MarshalAs(UnmanagedType.U4)] AudioUnitScopeType inScope,
+            uint inElement,
+            ref MonoTouch.AudioToolbox.AudioStreamBasicDescription outData,
+            ref uint ioDataSize
+            );
 
-        enum AudioUnitPropertyIDType
+        public enum AudioUnitPropertyIDType
         {
             // range (0 -> 999)
             kAudioUnitProperty_ClassInfo = 0,
@@ -201,7 +258,16 @@ namespace MonoTouch.AudioUnitWrapper
             kAudioUnitProperty_ElementName = 30,
             kAudioUnitProperty_SupportedChannelLayoutTags = 32,
             kAudioUnitProperty_PresentPreset = 36,
-            kAudioUnitProperty_ShouldAllocateBuffer = 51
+            kAudioUnitProperty_ShouldAllocateBuffer = 51,
+
+            //Output property
+	        kAudioOutputUnitProperty_CurrentDevice			= 2000,
+	        kAudioOutputUnitProperty_ChannelMap				= 2002, // this will also work with AUConverter
+	        kAudioOutputUnitProperty_EnableIO				= 2003,
+	        kAudioOutputUnitProperty_StartTime				= 2004,
+	        kAudioOutputUnitProperty_SetInputCallback		= 2005,
+	        kAudioOutputUnitProperty_HasIO					= 2006,
+	        kAudioOutputUnitProperty_StartTimestampsAtZero  = 2007	// this will also work with AUConverter
         };
         
         public enum AudioUnitScopeType

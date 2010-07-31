@@ -292,7 +292,7 @@
 							<real>186</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>310 108 1219 1021 0 0 1920 1178 </string>
+						<string>613 95 1219 1021 0 0 1920 1178 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -322,7 +322,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>DDB6AFC11201164F00D18677</string>
+										<string>DDDA29441202EFD1008F3320</string>
 										<key>history</key>
 										<array>
 											<string>DDB6AFB51201136100D18677</string>
@@ -332,7 +332,7 @@
 											<string>DDB6AFB91201136100D18677</string>
 											<string>DDB6AFBA1201136100D18677</string>
 											<string>DDB6AFBB1201136100D18677</string>
-											<string>DDB6AFC01201164F00D18677</string>
+											<string>DDB2EC351201658D00CDB292</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -344,14 +344,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1011, 682}}</string>
+								<string>{{0, 0}, {1011, 670}}</string>
 								<key>RubberWindowFrame</key>
-								<string>310 108 1219 1021 0 0 1920 1178 </string>
+								<string>613 95 1219 1021 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>682pt</string>
+							<string>670pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -364,14 +364,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 687}, {1011, 293}}</string>
+								<string>{{0, 675}, {1011, 305}}</string>
 								<key>RubberWindowFrame</key>
-								<string>310 108 1219 1021 0 0 1920 1178 </string>
+								<string>613 95 1219 1021 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>293pt</string>
+							<string>305pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -390,9 +390,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>DDB6AF7D1200C22F00D18677</string>
+				<string>DDDA29371202ED7F008F3320</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>DDB6AF7E1200C22F00D18677</string>
+				<string>DDDA29381202ED7F008F3320</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -530,14 +530,11 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C530D57069F1CE1000CFCEE</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>DDA0DAAB12005EF200EFA762</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>/Users/rupppau/AudioUnit_SampleCodes/Obj-C_AudioUnit_ExtAFS_PlayingSoundFile/ExtAudio.xcodeproj</string>
+		<string>/Users/rupppau/MonoTouch.AudioUnit/Obj-C_AudioUnit_ExtAFS_PlayingSoundFile/ExtAudio.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>310 108 1219 1021 0 0 1920 1178 </string>
+	<string>613 95 1219 1021 0 0 1920 1178 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -614,7 +611,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>DDA0DAAB12005EF200EFA762</string>
-				<string>DDB6AF7F1200C22F00D18677</string>
+				<string>DDDA29391202ED7F008F3320</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

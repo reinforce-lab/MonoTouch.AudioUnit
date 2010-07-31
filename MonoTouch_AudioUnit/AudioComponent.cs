@@ -4,7 +4,7 @@ using System.Text;
 using System.Runtime.InteropServices;
 
 
-namespace MonoTouch.AudioUnitWrapper
+namespace MonoTouch.AudioToolbox
 {
     public class AudioComponent : IDisposable
     {

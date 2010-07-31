@@ -8,7 +8,7 @@
     <ProjectGuid>{195329E1-A506-43D1-9FBC-2FD604343057}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MonoTouch.AudioUnitWrapper</RootNamespace>
+    <RootNamespace>MonoTouch.AudioToolbox</RootNamespace>
     <AssemblyName>MonoTouch.AudioUnitWrapper</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -34,7 +34,7 @@
   <ItemGroup>
     <Reference Include="monotouch, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Projects\monotouch.dll</HintPath>
+      <HintPath>..\..\Projects\monotouch.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -54,12 +54,12 @@
     <Compile Include="AudioBufferList.cs" />
     <Compile Include="AudioComponent.cs" />
     <Compile Include="AudioComponentDescription.cs" />
+    <Compile Include="AUGraph.cs" />
     <Compile Include="ExtAudioFile.cs" />
-    <Compile Include="_AudioConverter.cs" />
     <Compile Include="AudioUnit.cs" />
     <Compile Include="AudioUnitEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="_AudioConverterEventArgs.cs" />
+    <Compile Include="AudioGraphEventArgs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

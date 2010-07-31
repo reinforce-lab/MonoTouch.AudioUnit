@@ -2,7 +2,6 @@
 using System.Runtime.InteropServices;
 
 using MonoTouch.AudioToolbox;
-using MonoTouch.AudioUnitWrapper;
 
 namespace Monotouch_AudioUnit_PlayingSinWaveform
 {
@@ -114,10 +113,10 @@ namespace Monotouch_AudioUnit_PlayingSinWaveform
                 BitsPerChannel = 8 * AudioUnitSampleTypeSize,
                 Reserved = 0
             };
-            _audioUnit.SetAudioFormat(AudioUnit.AudioUnitScopeType.kAudioUnitScope_Input, audioFormat);
+            _audioUnit.SetAudioFormat(audioFormat, AudioUnit.AudioUnitScopeType.kAudioUnitScope_Input, 0);            
 
             // setting callback
-            _audioUnit.BufferCompleted += new EventHandler<AudioUnitEventArgs>(callback);
+            _audioUnit.RenderCallback += new EventHandler<AudioUnitEventArgs>(callback);
         }
         #endregion
 
