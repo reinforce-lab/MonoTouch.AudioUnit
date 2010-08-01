@@ -1,4 +1,13 @@
-﻿using System;
+﻿//
+// AudioGraphEventArgs.cs: Audio graph callback event arguments
+//
+// Author:
+//   AKIHIRO Uehara (u-akihiro@reinforce-lab.com)
+//
+// Copyright 2010 Reinforce Lab.
+//
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

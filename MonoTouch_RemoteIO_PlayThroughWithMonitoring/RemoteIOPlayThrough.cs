@@ -28,16 +28,16 @@ namespace Monotouch_RemoteIO_PlayThroughWithMonitoring
         #region Private methods
         void _auGraph_RenderCallback(object sender, AudioGraphEventArgs e)
         {
-            if (!_isRecording)
-                return;
-
             // is Post Render ?
             if ((e.ActionFlags & AudioUnit.AudioUnitRenderActionFlags.kAudioUnitRenderAction_PostRender) != 0)
             {
-                // reading buffer
-                _extAudioFile.WriteAsync(e.NumberFrames, e.Data);
-            }
-            throw new NotImplementedException();
+                /*
+                if (_isRecording)
+                {
+                    // reading buffer
+                    _extAudioFile.WriteAsync(e.NumberFrames, e.Data);
+                }*/
+            }            
         }
 
         void prepareAUGraph()
@@ -57,13 +57,13 @@ namespace Monotouch_RemoteIO_PlayThroughWithMonitoring
             int remoteIONode = _auGraph.AddNode(cd);
             AudioUnit remoteIOUnit = _auGraph.GetNodeInfo(remoteIONode);
 
-            // turning on microphone         
-            /*
-            remoteIOUnit.SetEnableIO(true, 
-                AudioUnit.AudioUnitScopeType.kAudioUnitScope_Input,
-                1 // remote input
-                );*/
+            // turning on microphone    
             
+            remoteIOUnit.SetEnableIO(true,                
+                AudioUnit.AudioUnitScopeType.kAudioUnitScope_Input,
+                1 // remote input                
+                );
+
             // audio canonical format
             AudioStreamBasicDescription audioFormat = CanonicalASBD(44100, 1);
             remoteIOUnit.SetAudioFormat(audioFormat,
@@ -85,8 +85,7 @@ namespace Monotouch_RemoteIO_PlayThroughWithMonitoring
                 AudioUnit.AudioUnitScopeType.kAudioUnitScope_Output,  // Remote output bus
                 0 // Remote output
                 );
-
-            // 
+            
             _auGraph.RenderCallback += new EventHandler<AudioGraphEventArgs>(_auGraph_RenderCallback);
             // graph initialization
             _auGraph.Initialize();
@@ -125,6 +124,7 @@ namespace Monotouch_RemoteIO_PlayThroughWithMonitoring
         #region Public methods
         public void StartRecording(CFUrl url)
         {
+            /*
             //  convertion audio format (AIFF)
             AudioStreamBasicDescription outputFormat = new AudioStreamBasicDescription()
             {
@@ -139,12 +139,12 @@ namespace Monotouch_RemoteIO_PlayThroughWithMonitoring
                 Reserved = 0
             };
 
-            _extAudioFile = ExtAudioFile.CreateWithURL(url, AudioFileType.AIFF, outputFormat, null, AudioFileFlags.EraseFlags);                             
+            _extAudioFile = ExtAudioFile.CreateWithURL(url, AudioFileType.AIFF, outputFormat, AudioFileFlags.EraseFlags);                             
             _extAudioFile.ClientDataFormat = _audioUnitOutputFormat;
             _extAudioFile.Seek(0);
 
             _isRecording = true;
-
+            */
         }
         public void StopRecording()
         {

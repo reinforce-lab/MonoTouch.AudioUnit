@@ -138,10 +138,15 @@ namespace Monotouch_AudioUnit_PlayingSoundFile
             _audioUnit = AudioUnit.CreateInstance(_audioComponent);
 
             // setting audio format
-            _audioUnit.SetAudioFormat(AudioUnit.AudioUnitScopeType.kAudioUnitScope_Input, _dstFormat);
+            _audioUnit.SetAudioFormat(_dstFormat, 
+                AudioUnit.AudioUnitScopeType.kAudioUnitScope_Input, 
+                0 // Remote Output
+                );            
 
             // setting callback method
             _audioUnit.RenderCallback += new EventHandler<AudioUnitEventArgs>(_audioUnit_RenderCallback);
+
+            _audioUnit.Initialize();
         }
         #endregion
 

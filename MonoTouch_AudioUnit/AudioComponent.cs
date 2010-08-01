@@ -1,4 +1,13 @@
-﻿using System;
+﻿//
+// AudioComponent.cs: AudioComponent wrapper class
+//
+// Author:
+//   AKIHIRO Uehara (u-akihiro@reinforce-lab.com)
+//
+// Copyright 2010 Reinforce Lab.
+//
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;

@@ -292,7 +292,7 @@
 							<real>186</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>310 122 1314 1039 0 0 1920 1178 </string>
+						<string>308 3 1314 1039 0 0 1920 1178 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -310,7 +310,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>RemoteIOPlayThru.m</string>
+								<string>ExtendedAudioFile.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -318,11 +318,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>RemoteIOPlayThru.m</string>
+										<string>ExtendedAudioFile.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>DDD147821203BD9C00ABDC26</string>
+										<string>DDB1DC75120597F8009CC2C6</string>
 										<key>history</key>
 										<array>
 											<string>DDD147711203BD9C00ABDC26</string>
@@ -336,7 +336,8 @@
 											<string>DDD1477C1203BD9C00ABDC26</string>
 											<string>DDD1477D1203BD9C00ABDC26</string>
 											<string>DDD1477F1203BD9C00ABDC26</string>
-											<string>DDD147811203BD9C00ABDC26</string>
+											<string>DDB1DC73120597F8009CC2C6</string>
+											<string>DDB1DC74120597F8009CC2C6</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -348,14 +349,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1106, 715}}</string>
+								<string>{{0, 0}, {1106, 703}}</string>
 								<key>RubberWindowFrame</key>
-								<string>310 122 1314 1039 0 0 1920 1178 </string>
+								<string>308 3 1314 1039 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>715pt</string>
+							<string>703pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -368,14 +369,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 720}, {1106, 278}}</string>
+								<string>{{0, 708}, {1106, 290}}</string>
 								<key>RubberWindowFrame</key>
-								<string>310 122 1314 1039 0 0 1920 1178 </string>
+								<string>308 3 1314 1039 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>278pt</string>
+							<string>290pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -394,9 +395,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>DDD147831203BD9C00ABDC26</string>
+				<string>DDB1DC77120597F8009CC2C6</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>DDD147841203BD9C00ABDC26</string>
+				<string>DDB1DC78120597F8009CC2C6</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -534,14 +535,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C530D57069F1CE1000CFCEE</string>
-		<string>DDD147851203BD9C00ABDC26</string>
-		<string>DDDA29BE1202F467008F3320</string>
 		<string>1CD10A99069EF8BA00B06720</string>
+		<string>DDDA29BE1202F467008F3320</string>
+		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>/Users/rupppau/MonoTouch.AudioUnit/Obj-C_RemoteIO_PlayThroughWithMonitoring/RemoteIOPlayThru.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>310 122 1314 1039 0 0 1920 1178 </string>
+	<string>308 3 1314 1039 0 0 1920 1178 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -618,7 +618,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>DDDA29BE1202F467008F3320</string>
-				<string>DDD147651203BD2100ABDC26</string>
+				<string>DDB1DC79120597F8009CC2C6</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -662,8 +662,8 @@
 										<string>yes</string>
 										<key>sizes</key>
 										<array>
-											<string>{{0, 0}, {316, 194}}</string>
-											<string>{{316, 0}, {378, 194}}</string>
+											<string>{{0, 0}, {316, 198}}</string>
+											<string>{{316, 0}, {378, 198}}</string>
 										</array>
 									</dict>
 									<key>VerticalSplitView</key>
@@ -678,8 +678,8 @@
 										<string>yes</string>
 										<key>sizes</key>
 										<array>
-											<string>{{0, 0}, {694, 194}}</string>
-											<string>{{0, 194}, {694, 187}}</string>
+											<string>{{0, 0}, {694, 198}}</string>
+											<string>{{0, 198}, {694, 183}}</string>
 										</array>
 									</dict>
 								</dict>
@@ -712,7 +712,7 @@
 										<real>148</real>
 									</array>
 									<key>Frame</key>
-									<string>{{316, 0}, {378, 194}}</string>
+									<string>{{316, 0}, {378, 198}}</string>
 									<key>RubberWindowFrame</key>
 									<string>146 649 694 422 0 0 1920 1178 </string>
 								</dict>
@@ -740,13 +740,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>DDD147661203BD2100ABDC26</string>
+				<string>DDB1DC7A120597F8009CC2C6</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>DDD147671203BD2100ABDC26</string>
-				<string>DDD147681203BD2100ABDC26</string>
-				<string>DDD147691203BD2100ABDC26</string>
-				<string>DDD1476A1203BD2100ABDC26</string>
-				<string>DDD1476B1203BD2100ABDC26</string>
+				<string>DDB1DC7B120597F8009CC2C6</string>
+				<string>DDB1DC7C120597F8009CC2C6</string>
+				<string>DDB1DC7D120597F8009CC2C6</string>
+				<string>DDB1DC7E120597F8009CC2C6</string>
+				<string>DDB1DC7F120597F8009CC2C6</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -778,7 +778,7 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>RemoteIOPlayThruViewController.m</string>
+										<string>RemoteIOPlayThru.m</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
@@ -787,7 +787,7 @@
 										<key>Frame</key>
 										<string>{{0, 0}, {781, 212}}</string>
 										<key>RubberWindowFrame</key>
-										<string>255 314 781 470 0 0 1920 1178 </string>
+										<string>311 708 781 470 0 0 1920 1178 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXNavigatorGroup</string>
@@ -813,7 +813,7 @@
 								<key>Frame</key>
 								<string>{{0, 217}, {781, 212}}</string>
 								<key>RubberWindowFrame</key>
-								<string>255 314 781 470 0 0 1920 1178 </string>
+								<string>311 708 781 470 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXProjectFindModule</string>
@@ -836,17 +836,17 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D57069F1CE1000CFCEE</string>
-				<string>DDD1476E1203BD2100ABDC26</string>
-				<string>DDD1476F1203BD2100ABDC26</string>
+				<string>DDB1DC80120597F8009CC2C6</string>
+				<string>DDB1DC81120597F8009CC2C6</string>
 				<string>1CDD528C0622207200134675</string>
 				<string>1CD0528E0623707200166675</string>
 			</array>
 			<key>WindowString</key>
-			<string>255 314 781 470 0 0 1920 1178 </string>
+			<string>311 708 781 470 0 0 1920 1178 </string>
 			<key>WindowToolGUID</key>
 			<string>1C530D57069F1CE1000CFCEE</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

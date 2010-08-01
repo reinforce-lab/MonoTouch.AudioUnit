@@ -1,4 +1,13 @@
-﻿using System;
+﻿//
+// ExtAudioFile.cs: ExtAudioFile wrapper class
+//
+// Author:
+//   AKIHIRO Uehara (u-akihiro@reinforce-lab.com)
+//
+// Copyright 2010 Reinforce Lab.
+//
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
@@ -14,7 +23,7 @@ namespace MonoTouch.AudioToolbox
         readonly IntPtr _extAudioFile;
         #endregion
 
-        #region Property
+        #region Property        
         public long FileLengthFrames
         {
             get {
@@ -63,8 +72,7 @@ namespace MonoTouch.AudioToolbox
                     throw new InvalidOperationException(String.Format("Error code:{0}", err));
                 }
             }
-        }    
-
+        }           
         #endregion
 
         #region Constructor
@@ -77,7 +85,7 @@ namespace MonoTouch.AudioToolbox
         #region Private methods
         #endregion
 
-        #region Public methods
+        #region Public methods        
         public static ExtAudioFile OpenURL(MonoTouch.CoreFoundation.CFUrl url)
         { 
             int err;
@@ -96,13 +104,16 @@ namespace MonoTouch.AudioToolbox
             
             return new ExtAudioFile(ptr);
         }
-        public static ExtAudioFile CreateWithURL(MonoTouch.CoreFoundation.CFUrl url, 
-            AudioFileType fileType, AudioStreamBasicDescription inStreamDesc, AudioChannelLayout channelLayout, AudioFileFlags flag)
-        { 
+        public static ExtAudioFile CreateWithURL(MonoTouch.CoreFoundation.CFUrl url,
+            AudioFileType fileType, 
+            AudioStreamBasicDescription inStreamDesc, 
+            //AudioChannelLayout channelLayout, 
+            AudioFileFlags flag)
+        {             
             int err;
             IntPtr ptr = new IntPtr();
             unsafe {                
-                err = ExtAudioFileCreateWithURL(url.Handle, fileType, inStreamDesc, channelLayout, flag,
+                err = ExtAudioFileCreateWithURL(url.Handle, fileType, ref inStreamDesc, IntPtr.Zero, (uint)flag,
                     (IntPtr)(&ptr));
             }            
             if (err != 0)
@@ -114,7 +125,7 @@ namespace MonoTouch.AudioToolbox
                 throw new InvalidOperationException("Can not get object instance");
             }
             
-            return new ExtAudioFile(ptr);
+            return new ExtAudioFile(ptr);         
         }
         public void Seek(long frameOffset)
         {
@@ -151,7 +162,7 @@ namespace MonoTouch.AudioToolbox
             int err = ExtAudioFileWriteAsync(_extAudioFile, numberFrames, data);
             if (err != 0)
                 throw new ArgumentException(String.Format("Error code:{0}", err));            
-        }
+        }         
         #endregion
 
         #region IDisposable メンバ
@@ -160,6 +171,7 @@ namespace MonoTouch.AudioToolbox
             ExtAudioFileDispose(_extAudioFile);            
         }
         #endregion
+
 
         #region Interop
         [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "ExtAudioFileOpenURL")]
@@ -179,28 +191,30 @@ namespace MonoTouch.AudioToolbox
         
         [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "ExtAudioFileTell")]
         static extern int ExtAudioFileTell(IntPtr inExtAudioFile, ref long outFrameOffset);
-
+        
         [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "ExtAudioFileCreateWithURL")]
         static extern int ExtAudioFileCreateWithURL(IntPtr inURL,
-            AudioFileType inFileType,
-            AudioStreamBasicDescription inStreamDesc,
-            AudioChannelLayout inChannelLayout,
-            AudioFileFlags flags,
+            [MarshalAs(UnmanagedType.U4)] AudioFileType inFileType,
+            ref AudioStreamBasicDescription inStreamDesc,
+            IntPtr inChannelLayout, //AudioChannelLayout inChannelLayout, AudioChannelLayout results in compilation error (error code 134.)
+            UInt32 flags,
             IntPtr outExtAudioFile);            
-
+        
         [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "ExtAudioFileGetProperty")]
         static extern int ExtAudioFileGetProperty(
             IntPtr inExtAudioFile, 
             ExtAudioFilePropertyIDType inPropertyID,
             ref uint ioPropertyDataSize,
             IntPtr outPropertyData);
-
+        
         [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "ExtAudioFileGetProperty")]
         static extern int ExtAudioFileGetProperty(
             IntPtr inExtAudioFile,
             ExtAudioFilePropertyIDType inPropertyID,
             ref uint ioPropertyDataSize,
             ref AudioStreamBasicDescription outPropertyData);
+
+        
 
         [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "ExtAudioFileGetProperty")]
         static extern int ExtAudioFileGetProperty(
@@ -222,33 +236,28 @@ namespace MonoTouch.AudioToolbox
             ExtAudioFilePropertyIDType inPropertyID,
             uint ioPropertyDataSize,
             ref AudioStreamBasicDescription outPropertyData);
-
-
+        
         enum ExtAudioFilePropertyIDType {                 
 	        kExtAudioFileProperty_FileDataFormat		= 0x66666d74, //'ffmt',   // AudioStreamBasicDescription
 	        //kExtAudioFileProperty_FileChannelLayout		= 'fclo',   // AudioChannelLayout
 
             kExtAudioFileProperty_ClientDataFormat = 0x63666d74, //'cfmt',   // AudioStreamBasicDescription
-	//kExtAudioFileProperty_ClientChannelLayout	= 'cclo',   // AudioChannelLayout
-	//kExtAudioFileProperty_CodecManufacturer		= 'cman',	// UInt32
+	        //kExtAudioFileProperty_ClientChannelLayout	= 'cclo',   // AudioChannelLayout
+	        //kExtAudioFileProperty_CodecManufacturer		= 'cman',	// UInt32
 	
-	// read-only:
-	//kExtAudioFileProperty_AudioConverter		= 'acnv',	// AudioConverterRef
-	//kExtAudioFileProperty_AudioFile				= 'afil',	// AudioFileID
-	//kExtAudioFileProperty_FileMaxPacketSize		= 'fmps',	// UInt32
-	//kExtAudioFileProperty_ClientMaxPacketSize	= 'cmps',	// UInt32
+	        // read-only:
+	        //kExtAudioFileProperty_AudioConverter		= 'acnv',	// AudioConverterRef
+	        //kExtAudioFileProperty_AudioFile				= 'afil',	// AudioFileID
+	        //kExtAudioFileProperty_FileMaxPacketSize		= 'fmps',	// UInt32
+	        //kExtAudioFileProperty_ClientMaxPacketSize	= 'cmps',	// UInt32
 	        kExtAudioFileProperty_FileLengthFrames		= 0x2366726d,//'#frm',	// SInt64
 	
-	// writable:
-	//kExtAudioFileProperty_ConverterConfig		= 'accf',   // CFPropertyListRef
-	//kExtAudioFileProperty_IOBufferSizeBytes		= 'iobs',	// UInt32
-	//kExtAudioFileProperty_IOBuffer				= 'iobf',	// void *
-	//kExtAudioFileProperty_PacketTable			= 'xpti'	// AudioFilePacketTableInfo             
+	        // writable:
+	        //kExtAudioFileProperty_ConverterConfig		= 'accf',   // CFPropertyListRef
+	        //kExtAudioFileProperty_IOBufferSizeBytes		= 'iobs',	// UInt32
+	        //kExtAudioFileProperty_IOBuffer				= 'iobf',	// void *
+	        //kExtAudioFileProperty_PacketTable			= 'xpti'	// AudioFilePacketTableInfo             
         };
-           
-
-        
         #endregion
-
     }
 }

@@ -63,10 +63,11 @@ namespace Monotouch_RemoteIO_PlayThroughWithMonitoring
 
             _url = MonoTouch.CoreFoundation.CFUrl.FromFile("output.aif");
             _player = new RemoteIOPlayThrough();
-
-            // setting audio session
+            
             _playButton.TouchDown += new EventHandler(_playButton_TouchDown);
             _stopButton.TouchDown += new EventHandler(_stopButton_TouchDown);
+
+            _player.Play();
         }
 
 
@@ -78,7 +79,6 @@ namespace Monotouch_RemoteIO_PlayThroughWithMonitoring
         void _stopButton_TouchDown(object sender, EventArgs e)
         {
             _player.StopRecording();
-
 
             var player = AVAudioPlayer.FromUrl(MonoTouch.Foundation.NSUrl.FromFilename("output.aif"));
             player.Play();

@@ -1,17 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" ctype="Workspace" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../MonoTouch_AudioUnit/ExtAudioFile.cs" ctype="Workbench">
+  <MonoDevelop.Ide.Workbench ActiveDocument="RemoteIOPlayThrough.cs" ctype="Workbench">
     <Files>
-      <File FileName="RemoteIOPlayThrough.cs" Line="50" Column="10" />
-      <File FileName="Main.cs" Line="4" Column="17" />
-      <File FileName="../MonoTouch_AudioUnit/AudioUnit.cs" Line="109" Column="59" />
-      <File FileName="../MonoTouch_AudioUnit/ExtAudioFile.cs" Line="89" Column="14" />
+      <File FileName="RemoteIOPlayThrough.cs" Line="15" Column="26" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="MonoTouch.AudioUnit" expanded="True" />
-          <Node name="Monotouch_RemoteIO_PlayThroughWithMonitoring" expanded="True" selected="True" />
+          <Node name="Monotouch_RemoteIO_PlayThroughWithMonitoring" expanded="True">
+            <Node name="RemoteIOPlayThrough.cs" selected="True" />
+          </Node>
         </State>
       </Pad>
       <Pad Id="ClassPad">
