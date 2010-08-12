@@ -24,6 +24,7 @@ namespace MonoTouch.AudioToolbox
 
         #region Properties
         public event EventHandler<AudioUnitEventArgs> RenderCallback;
+        //public event EventHandler<AudioUnitEventArgs> InputCallback;
         public bool IsPlaying { get { return _isPlaying; } }
         #endregion
 
@@ -45,6 +46,21 @@ namespace MonoTouch.AudioToolbox
                 (uint)Marshal.SizeOf(callbackStruct));
             if (err != 0)
                 throw new ArgumentException(String.Format("Error code: {0}", err));
+            /*
+                      // setting input handler     
+                      callbackStruct = new AURenderCallbackStrct();
+                      callbackStruct.inputProc = inputCallback; // setting callback function            
+                      callbackStruct.inputProcRefCon = GCHandle.ToIntPtr(_handle); // a pointer that passed to the renderCallback (IntPtr inRefCon) 
+                      err = AudioUnitSetProperty(_audioUnit,
+                          //AudioUnitPropertyIDType.kAudioUnitProperty_SetRenderCallback,
+                          AudioUnitPropertyIDType.kAudioOutputUnitProperty_SetInputCallback,
+                          //AudioUnitScopeType.kAudioUnitScope_Output,
+                          AudioUnitScopeType.kAudioUnitScope_Global,
+                          1, // 1 == microphone
+                          callbackStruct,
+                          (uint)Marshal.SizeOf(callbackStruct));
+                      if (err != 0)
+                          throw new ArgumentException(String.Format("Error code: {0}", err));*/
         }
         #endregion
 
@@ -157,6 +173,17 @@ namespace MonoTouch.AudioToolbox
                 _isPlaying = false;
             }
         }
+        public void Render(AudioUnitRenderActionFlags flags, AudioTimeStamp timeStamp, UInt32 outputBusnumber, UInt32 numberFrames, AudioBufferList data)
+        {
+            int err = AudioUnitRender(_audioUnit,
+                ref flags,
+                timeStamp,
+                outputBusnumber,
+                numberFrames,
+                data);
+            if (err != 0)
+                throw new InvalidOperationException(String.Format("Error code:{0}", err));
+        }
         #endregion
 
         #region IDisposable メンバ
@@ -202,6 +229,15 @@ namespace MonoTouch.AudioToolbox
 
         [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "AudioOutputUnitStop")]
         static extern int AudioOutputUnitStop(IntPtr ci);
+
+        [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "AudioUnitRender")]
+        static extern int AudioUnitRender(IntPtr inUnit,
+            ref AudioUnitRenderActionFlags ioActionFlags,
+            AudioTimeStamp inTimeStamp,
+            UInt32 inOutputBusNumber,
+            UInt32 inNumberFrames,
+            AudioBufferList ioData
+            );
 
         [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "AudioUnitSetProperty")]
         static extern int AudioUnitSetProperty(IntPtr inUnit,

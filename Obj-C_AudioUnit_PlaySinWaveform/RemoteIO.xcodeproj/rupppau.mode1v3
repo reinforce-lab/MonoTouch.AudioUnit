@@ -322,10 +322,10 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>DD05CDF31204ED4D00E2617A</string>
+										<string>DDF9A8521214288500676249</string>
 										<key>history</key>
 										<array>
-											<string>DDD147B9120445F600ABDC26</string>
+											<string>DD05CDF31204ED4D00E2617A</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -337,14 +337,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {956, 840}}</string>
+								<string>{{0, 0}, {956, 836}}</string>
 								<key>RubberWindowFrame</key>
 								<string>380 85 1164 1071 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>840pt</string>
+							<string>836pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -357,14 +357,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 845}, {956, 185}}</string>
+								<string>{{0, 841}, {956, 189}}</string>
 								<key>RubberWindowFrame</key>
 								<string>380 85 1164 1071 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>185pt</string>
+							<string>189pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -383,9 +383,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>DD05CDF41204ED4D00E2617A</string>
+				<string>DDF9A8531214288500676249</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>DD05CDF51204ED4D00E2617A</string>
+				<string>DDF9A8541214288500676249</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -524,7 +524,7 @@
 	<key>WindowOrderList</key>
 	<array>
 		<string>DDD147AF120445CD00ABDC26</string>
-		<string>/Users/rupppau/MonoTouch.AudioUnit/Obj-C_AudioUnit_PlaySinWaveform/RemoteIO.xcodeproj</string>
+		<string>/Users/rupppau/Projects/MonoTouch.AudioUnit/Obj-C_AudioUnit_PlaySinWaveform/RemoteIO.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>380 85 1164 1071 0 0 1920 1178 </string>
@@ -604,7 +604,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>DDD147AF120445CD00ABDC26</string>
-				<string>DD05CDF61204ED4D00E2617A</string>
+				<string>DDF9A8551214288500676249</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

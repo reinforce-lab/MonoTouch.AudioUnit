@@ -3,23 +3,23 @@ using System.Runtime.InteropServices;
 
 using MonoTouch.AudioToolbox;
 
-namespace Monotouch_AudioUnit_PlayingSinWaveform
+namespace Monotouch_AudioUnit_MicMonitoring
 {
-    class RemoteOutput :IDisposable
-    {        
+    class RemoteOutput : IDisposable
+    {
         #region Variables
         const int kAudioUnitSampleFractionBits = 24;
         readonly int _sampleRate;
 
         AudioComponent _component;
         AudioUnit _audioUnit;
-        double _phase;        
+        double _phase;
         #endregion
 
         #region Constructor
         public RemoteOutput()
-        {            
-            _sampleRate = 44100;            
+        {
+            _sampleRate = 44100;
 
             prepareAudioUnit();
         }
@@ -28,84 +28,56 @@ namespace Monotouch_AudioUnit_PlayingSinWaveform
         #region Private methods
         void simulator_callback(object sender, AudioUnitEventArgs args)
         {
-            // Generating sin waveform
-            double dphai = 440 * 2.0 * Math.PI / _sampleRate;
-
-            // Getting a pointer to a buffer to be filled
-            IntPtr outL = args.Data.mBuffers[0].mData;
-            IntPtr outR = args.Data.mBuffers[1].mData;
-
-            // filling sin waveform.
-            // AudioUnitSampleType is different between a simulator (float32) and a real device (int32).
-            unsafe
-            {
-                var outLPtr = (float*)outL.ToPointer();
-                var outRPtr = (float*)outR.ToPointer();
-                for (int i = 0; i < args.NumberFrames; i++)
-                {
-                    float sample = (float)Math.Sin(_phase) / 2048;
-                    *outLPtr++ = sample;
-                    *outRPtr++ = sample;
-                    _phase += dphai;
-                }
-            }
-            _phase %= 2 * Math.PI;
+            // getting microphone
+            _audioUnit.Render(args.ActionFlags, 
+                args.TimeStamp,
+                1, // Remote input
+                args.NumberFrames,
+                args.Data);
         }
         // AudioUnit callback function uses this method to use instance variables. 
         // In the static callback method is not convienient because instance variables can not used.
         void device_callback(object sender, AudioUnitEventArgs args)
         {
-            // Generating sin waveform
-            double dphai = 440 * 2.0 * Math.PI / _sampleRate;
-
-            // Getting a pointer to a buffer to be filled
-            IntPtr outL = args.Data.mBuffers[0].mData;
-            IntPtr outR = args.Data.mBuffers[1].mData;
-
-            // filling sin waveform.
-            // AudioUnitSampleType is different between a simulator (float32) and a real device (int32).
-            unsafe
-            {
-                var outLPtr = (int*)outL.ToPointer();
-                var outRPtr = (int*)outR.ToPointer();
-                for (int i = 0; i < args.NumberFrames; i++)
-                {
-                    int sample = (int)(Math.Sin(_phase) * int.MaxValue / 128); // signal waveform format is fixed-point (8.24)
-                    *outLPtr++ = sample;
-                    *outRPtr++ = sample;
-                    _phase += dphai;
-                }
-            }
-            _phase %= 2 * Math.PI;
+            // getting microphone
+            _audioUnit.Render(args.ActionFlags,
+                args.TimeStamp,
+                1, // Remote input
+                args.NumberFrames,
+                args.Data);
         }
         void prepareAudioUnit()
         {
+            // AudioSession
+            AudioSession.Initialize();
+            AudioSession.SetActive(true);
+            AudioSession.Category = AudioSessionCategory.PlayAndRecord;
+            AudioSession.PreferredHardwareIOBufferDuration = 0.01f;            
+
             // Creating AudioComponentDescription instance of RemoteIO Audio Unit
-            AudioComponentDescription cd = new AudioComponentDescription()
+            var cd = new AudioComponentDescription()
             {
-                componentType    = AudioComponentDescription.AudioComponentType.kAudioUnitType_Output,
+                componentType = AudioComponentDescription.AudioComponentType.kAudioUnitType_Output,
                 componentSubType = AudioComponentDescription.AudioComponentSubType.kAudioUnitSubType_RemoteIO,
                 componentManufacturer = AudioComponentDescription.AudioComponentManufacturerType.kAudioUnitManufacturer_Apple,
                 componentFlags = 0,
                 componentFlagsMask = 0
             };
-            
+
             // Getting AudioComponent from the description
             _component = AudioComponent.FindComponent(cd);
-           
+
             // Getting Audiounit
             _audioUnit = AudioUnit.CreateInstance(_component);
 
+            // turning on microphone
+            _audioUnit.SetEnableIO(true,
+                AudioUnit.AudioUnitScopeType.kAudioUnitScope_Input,
+                1 // Remote Input
+                );
+
             // setting AudioStreamBasicDescription
-            int AudioUnitSampleTypeSize;
-            if (MonoTouch.ObjCRuntime.Runtime.Arch == MonoTouch.ObjCRuntime.Arch.SIMULATOR)
-            {
-                AudioUnitSampleTypeSize = sizeof(float);
-            }
-            else
-            {
-                AudioUnitSampleTypeSize = sizeof(int);
-            }
+            int AudioUnitSampleTypeSize = (MonoTouch.ObjCRuntime.Runtime.Arch == MonoTouch.ObjCRuntime.Arch.SIMULATOR) ? sizeof(float) : sizeof(uint);
             AudioStreamBasicDescription audioFormat = new AudioStreamBasicDescription()
             {
                 SampleRate = _sampleRate,
@@ -119,13 +91,23 @@ namespace Monotouch_AudioUnit_PlayingSinWaveform
                 BitsPerChannel = 8 * AudioUnitSampleTypeSize,
                 Reserved = 0
             };
-            _audioUnit.SetAudioFormat(audioFormat, AudioUnit.AudioUnitScopeType.kAudioUnitScope_Input, 0);            
+            _audioUnit.SetAudioFormat(audioFormat, 
+                AudioUnit.AudioUnitScopeType.kAudioUnitScope_Input, 
+                0 // Remote output
+                );
+            _audioUnit.SetAudioFormat(audioFormat, 
+                AudioUnit.AudioUnitScopeType.kAudioUnitScope_Output, 
+                1 // Remote input
+                );
 
             // setting callback
             if (MonoTouch.ObjCRuntime.Runtime.Arch == MonoTouch.ObjCRuntime.Arch.SIMULATOR)
                 _audioUnit.RenderCallback += new EventHandler<AudioUnitEventArgs>(simulator_callback);
             else
                 _audioUnit.RenderCallback += new EventHandler<AudioUnitEventArgs>(device_callback);
+
+            // initialize
+            _audioUnit.Initialize();
         }
         #endregion
 

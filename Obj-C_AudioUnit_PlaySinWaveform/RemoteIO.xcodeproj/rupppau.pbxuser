@@ -37,12 +37,12 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 302311878;
-			PBXWorkspaceStateSaveDate = 302311878;
+			PBXPerProjectTemplateStateSaveDate = 303310939;
+			PBXWorkspaceStateSaveDate = 303310939;
 		};
 		perUserProjectItems = {
 			DD05CDF31204ED4D00E2617A /* PBXTextBookmark */ = DD05CDF31204ED4D00E2617A /* PBXTextBookmark */;
-			DDD147B9120445F600ABDC26 /* PBXTextBookmark */ = DDD147B9120445F600ABDC26 /* PBXTextBookmark */;
+			DDF9A8521214288500676249 /* PBXTextBookmark */ = DDF9A8521214288500676249 /* PBXTextBookmark */;
 		};
 		sourceControlManager = DDD147C0120445F600ABDC26 /* Source Control */;
 		userBuildSettings = {
@@ -52,7 +52,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {895, 1629}}";
 			sepNavSelRange = "{1475, 24}";
-			sepNavVisRange = "{1694, 2152}";
+			sepNavVisRange = "{1694, 2150}";
 		};
 	};
 	DD05CDF31204ED4D00E2617A /* PBXTextBookmark */ = {
@@ -93,16 +93,6 @@
 		sourceDirectories = (
 		);
 	};
-	DDD147B9120445F600ABDC26 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = D9A167B40FFB66DB004A2EC8 /* RemoteOutput.m */;
-		name = "RemoteOutput.m: 54";
-		rLen = 24;
-		rLoc = 1475;
-		rType = 0;
-		vrLen = 2089;
-		vrLoc = 1755;
-	};
 	DDD147C0120445F600ABDC26 /* Source Control */ = {
 		isa = PBXSourceControlManager;
 		fallbackIsa = XCSourceControlManager;
@@ -116,5 +106,15 @@
 	DDD147C1120445F600ABDC26 /* Code sense */ = {
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
+	};
+	DDF9A8521214288500676249 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D9A167B40FFB66DB004A2EC8 /* RemoteOutput.m */;
+		name = "RemoteOutput.m: 54";
+		rLen = 24;
+		rLoc = 1475;
+		rType = 0;
+		vrLen = 2150;
+		vrLoc = 1694;
 	};
 }
