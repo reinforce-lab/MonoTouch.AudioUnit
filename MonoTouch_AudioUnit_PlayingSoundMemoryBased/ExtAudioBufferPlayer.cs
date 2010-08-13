@@ -5,9 +5,9 @@ using System.Text;
 using MonoTouch.AudioToolbox;
 using MonoTouch.CoreFoundation;
 
-namespace Monotouch_AudioUnit_PlayingSoundFile
+namespace Monotouch_AudioUnit_PlayingSoundMemoryBased
 {
-    class ExtAudioFilePlayer : IDisposable
+    class ExtAudioBufferPlayer : IDisposable
     {
         #region Variables        
         readonly CFUrl _url;
@@ -16,12 +16,18 @@ namespace Monotouch_AudioUnit_PlayingSoundFile
         AudioComponent _audioComponent;
         AudioUnit _audioUnit;        
         ExtAudioFile _extAudioFile;
+        AudioBufferList _buffer;
 
         AudioStreamBasicDescription _srcFormat;
         AudioStreamBasicDescription _dstFormat;        
 
         //long _startingPacketCount;
-        long _totalFrames;                
+        long _totalFrames;
+        bool _isDone;
+        bool _isReverse;
+        uint _currentFrame;
+        bool _isLoop;
+        int  _numberOfChannels;
         #endregion
 
         #region Properties        
@@ -33,21 +39,25 @@ namespace Monotouch_AudioUnit_PlayingSoundFile
                 long frame = value;
                 frame = Math.Min(frame, _totalFrames);
                 frame = Math.Max(frame, 0);
-                
-                _extAudioFile.Seek(frame);
+                _currentFrame = (uint)frame;                
             }
             get
             {
-                return _extAudioFile.FileTell();
+                return _currentFrame;
             }
         }
         #endregion
 
         #region Constructor
-        public ExtAudioFilePlayer(CFUrl url)
+        public ExtAudioBufferPlayer(CFUrl url)
         {
             _sampleRate = 44100;
             _url = url;
+
+            _isDone = false;
+            _isReverse = false;
+            _currentFrame = 0;
+            _isLoop = false;
 
             prepareExtAudioFile();
             prepareAudioUnit();
@@ -55,19 +65,67 @@ namespace Monotouch_AudioUnit_PlayingSoundFile
         #endregion
 
         #region private methods
-        void _audioUnit_RenderCallback(object sender, AudioUnitEventArgs e)
+        void _audioUnit_RenderCallback(object sender, AudioUnitEventArgs args)
         {
-            // reading buffer
-            uint numberFrames = e.NumberFrames;
-            numberFrames = _extAudioFile.Read(numberFrames, e.Data);            
-            // is EOF?
-            if (numberFrames != e.NumberFrames)
+            // Getting a pointer to a buffer to be filled
+            IntPtr outL = args.Data.mBuffers[0].mData;
+            IntPtr outR = args.Data.mBuffers[1].mData;
+
+            unsafe
             {
-                // loop back to file head
-                _extAudioFile.Seek(0);                
+                var outLPtr = (int*)outL.ToPointer();
+                var outRPtr = (int*)outR.ToPointer();                
+                
+                var buf0 = (int*)_buffer.mBuffers[0].mData;
+                int *buf1= (_numberOfChannels == 2) ? (int*)_buffer.mBuffers[1].mData : buf0;
+
+                for (int i = 0; i < args.NumberFrames; i++)
+                {
+                    if (_isDone)
+                    {
+                        // 0-filling
+                        *outLPtr++ = 0;
+                        *outRPtr++ = 0;
+                    }
+                    else 
+                    {
+                        if (!_isReverse)
+                        {
+                            // normal play
+                            if (_currentFrame >= _totalFrames)
+                            {
+                                _currentFrame = 0;
+                                if (!_isLoop)
+                                {
+                                    _isDone = true;
+                                }
+                            }
+
+                            *outLPtr++ = buf0[++_currentFrame];
+                            *outRPtr++ = buf1[_currentFrame];
+                        }
+                        else
+                        { 
+                            // reverse
+                            if (_currentFrame <= 0)
+                            {
+                                _currentFrame = (uint)( _totalFrames - 1);
+                                if (_isLoop)
+                                {
+                                    _isDone = true;
+                                }
+                            }
+                            *outLPtr++ = buf0[--_currentFrame];
+                            *outRPtr++ = buf1[_currentFrame];
+                        }
+                    }
+                }
+            }
+            if (_isDone)
+            {
                 Stop();
             }
-        }      
+        }
 
         void prepareExtAudioFile()
         {
@@ -85,9 +143,13 @@ namespace Monotouch_AudioUnit_PlayingSoundFile
 
             // getting total frame
             _totalFrames = _extAudioFile.FileLengthFrames;
-            
-            // Seeking to the file head
-            _extAudioFile.Seek(0);
+
+            // Aloocating AudoBufferList
+            _buffer = new AudioBufferList((uint)_srcFormat.ChannelsPerFrame, (uint)(sizeof(uint) * _totalFrames));
+            _numberOfChannels = _srcFormat.ChannelsPerFrame;
+
+            // Reading all frame into the buffer
+            _extAudioFile.Read((uint)_totalFrames, _buffer);
         }
 
         void prepareAudioUnit()
@@ -124,6 +186,7 @@ namespace Monotouch_AudioUnit_PlayingSoundFile
         #region Public methods
         public void Play()
         {
+            _isDone = false;
             _audioUnit.Start();
         }
         public void Stop()

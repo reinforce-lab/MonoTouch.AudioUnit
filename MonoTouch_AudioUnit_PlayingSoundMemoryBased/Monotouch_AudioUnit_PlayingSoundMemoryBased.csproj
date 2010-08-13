@@ -5,13 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{7845765B-C394-4F95-B79A-0CAFCEC73C39}</ProjectGuid>
+    <ProjectGuid>{FEAD8552-5EA3-45C8-8DBE-BBA24397671F}</ProjectGuid>
     <ProjectTypeGuids>{E613F3A2-FE9C-494F-B74E-F63BCB86FEA6};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <OutputType>Library</OutputType>
-    <RootNamespace>MonoTouch.AudioUnit</RootNamespace>
-    <AssemblyName>MonoTouchAudioUnit</AssemblyName>
-    <MtouchSdkVersion>3.2</MtouchSdkVersion>
-    <MtouchMinimumOS>3.0</MtouchMinimumOS>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Monotouch_AudioUnit_PlayingSoundMemoryBased</RootNamespace>
+    <MainNibFile>MainWindow.xib</MainNibFile>
+    <AssemblyName>Monotouch_SoundRecording</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
@@ -25,7 +24,10 @@
     <MtouchDebug>True</MtouchDebug>
     <ConsolePause>false</ConsolePause>
     <MtouchLink>None</MtouchLink>
+    <MtouchI18n />
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <MtouchSdkVersion>4.0</MtouchSdkVersion>
+    <MtouchMinimumOS>3.1.3</MtouchMinimumOS>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -37,6 +39,9 @@
     <ConsolePause>false</ConsolePause>
     <MtouchLink>None</MtouchLink>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <MtouchSdkVersion>3.2</MtouchSdkVersion>
+    <MtouchMinimumOS>3.0</MtouchMinimumOS>
+    <MtouchI18n />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,6 +55,9 @@
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <MtouchSdkVersion>4.0</MtouchSdkVersion>
+    <MtouchMinimumOS>3.1.3</MtouchMinimumOS>
+    <MtouchI18n />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -61,12 +69,35 @@
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <MtouchSdkVersion>4.0</MtouchSdkVersion>
+    <MtouchMinimumOS>4.0</MtouchMinimumOS>
+    <MtouchI18n />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.plist" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="MainWindow.xib.designer.cs">
+      <DependentUpon>MainWindow.xib</DependentUpon>
+    </Compile>
+    <Compile Include="MainView.xib.designer.cs">
+      <DependentUpon>MainView.xib</DependentUpon>
+    </Compile>
+    <Compile Include="MainView.xib.cs">
+      <DependentUpon>MainView.xib</DependentUpon>
+    </Compile>
+    <Compile Include="ExtAudioBufferPlayer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MainWindow.xib" />
+    <Page Include="MainView.xib" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
@@ -75,15 +106,17 @@
     </MonoDevelop>
   </ProjectExtensions>
   <ItemGroup>
-    <Compile Include="AudioBuffer.cs" />
-    <Compile Include="AudioBufferList.cs" />
-    <Compile Include="AudioComponentDescription.cs" />
-    <Compile Include="AudioComponent.cs" />
-    <Compile Include="AudioUnit.cs" />
-    <Compile Include="AudioUnitEventArgs.cs" />
-    <Compile Include="ExtAudioFile.cs" />
-    <Compile Include="AudioGraphEventArgs.cs" />
-    <Compile Include="AUGraph.cs" />
-    <Compile Include="AudioUnitUtils.cs" />
+    <ProjectReference Include="..\MonoTouch_AudioUnit\MonoTouch.AudioUnit.csproj">
+      <Project>{7845765B-C394-4F95-B79A-0CAFCEC73C39}</Project>
+      <Name>MonoTouch.AudioUnit</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="loop_mono.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="loop_stereo.aif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>
