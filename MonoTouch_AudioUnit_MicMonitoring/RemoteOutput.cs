@@ -12,8 +12,7 @@ namespace Monotouch_AudioUnit_MicMonitoring
         readonly int _sampleRate;
 
         AudioComponent _component;
-        AudioUnit _audioUnit;
-        double _phase;
+        AudioUnit _audioUnit;        
         #endregion
 
         #region Constructor
