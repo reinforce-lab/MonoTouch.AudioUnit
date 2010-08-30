@@ -1,0 +1,8 @@
+#ignore build files
+*/bin/*
+*/obj/*
+*/build/*
+
+#ignore local files of VisualStudio 
+*.pidb
+
