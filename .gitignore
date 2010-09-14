@@ -3,6 +3,10 @@
 */obj/*
 */build/*
 
+*.mode1v3
+*.pbxuser
+
 #ignore local files of VisualStudio 
 *.pidb
-
+*.suo
+*.userprefs

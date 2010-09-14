@@ -26,8 +26,8 @@
     <MtouchLink>None</MtouchLink>
     <MtouchI18n />
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <MtouchSdkVersion>4.0</MtouchSdkVersion>
-    <MtouchMinimumOS>3.1.3</MtouchMinimumOS>
+    <MtouchSdkVersion>4.1</MtouchSdkVersion>
+    <MtouchMinimumOS>3.1</MtouchMinimumOS>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -55,8 +55,8 @@
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <MtouchSdkVersion>4.0</MtouchSdkVersion>
-    <MtouchMinimumOS>3.1.3</MtouchMinimumOS>
+    <MtouchSdkVersion>4.1</MtouchSdkVersion>
+    <MtouchMinimumOS>3.1</MtouchMinimumOS>
     <MtouchI18n />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">

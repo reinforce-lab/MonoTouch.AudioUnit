@@ -24,7 +24,7 @@ namespace Monotouch_AudioUnit_SoundTriggeredPlayingSoundMemoryBased
 			// If you have defined a view, add it here:
 			// window.AddSubview (navigationController.View);
             _ctr = new  MainView();
-            window.Add(_ctr.View);
+            window.AddSubview(_ctr.View);
 			window.MakeKeyAndVisible ();
 			
 			return true;

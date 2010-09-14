@@ -42,7 +42,7 @@ namespace MonoTouch.AudioToolbox
         [MonoTouch.MonoPInvokeCallback(typeof(AudioUnit.AURenderCallback))]
         static int renderCallback(IntPtr inRefCon,
             ref AudioUnit.AudioUnitRenderActionFlags _ioActionFlags,
-            MonoTouch.AudioToolbox.AudioTimeStamp _inTimeStamp,
+            ref AudioTimeStamp _inTimeStamp,
             uint _inBusNumber,
             uint _inNumberFrames,
             AudioBufferList _ioData)

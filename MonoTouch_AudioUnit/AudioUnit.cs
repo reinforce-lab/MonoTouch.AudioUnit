@@ -45,22 +45,7 @@ namespace MonoTouch.AudioToolbox
                 callbackStruct,
                 (uint)Marshal.SizeOf(callbackStruct));
             if (err != 0)
-                throw new ArgumentException(String.Format("Error code: {0}", err));
-            /*
-                      // setting input handler     
-                      callbackStruct = new AURenderCallbackStrct();
-                      callbackStruct.inputProc = inputCallback; // setting callback function            
-                      callbackStruct.inputProcRefCon = GCHandle.ToIntPtr(_handle); // a pointer that passed to the renderCallback (IntPtr inRefCon) 
-                      err = AudioUnitSetProperty(_audioUnit,
-                          //AudioUnitPropertyIDType.kAudioUnitProperty_SetRenderCallback,
-                          AudioUnitPropertyIDType.kAudioOutputUnitProperty_SetInputCallback,
-                          //AudioUnitScopeType.kAudioUnitScope_Output,
-                          AudioUnitScopeType.kAudioUnitScope_Global,
-                          1, // 1 == microphone
-                          callbackStruct,
-                          (uint)Marshal.SizeOf(callbackStruct));
-                      if (err != 0)
-                          throw new ArgumentException(String.Format("Error code: {0}", err));*/
+                throw new ArgumentException(String.Format("Error code: {0}", err));           
         }
         #endregion
 
@@ -69,7 +54,7 @@ namespace MonoTouch.AudioToolbox
         [MonoTouch.MonoPInvokeCallback(typeof(AURenderCallback))]
         static int renderCallback(IntPtr inRefCon,
             ref AudioUnitRenderActionFlags _ioActionFlags,
-            MonoTouch.AudioToolbox.AudioTimeStamp _inTimeStamp,
+            ref AudioTimeStamp _inTimeStamp,
             uint _inBusNumber,
             uint _inNumberFrames,
             AudioBufferList _ioData)
@@ -177,7 +162,7 @@ namespace MonoTouch.AudioToolbox
         {
             int err = AudioUnitRender(_audioUnit,
                 ref flags,
-                timeStamp,
+                ref timeStamp,
                 outputBusnumber,
                 numberFrames,
                 data);
@@ -201,7 +186,7 @@ namespace MonoTouch.AudioToolbox
         /// </summary>
         public delegate int AURenderCallback(IntPtr inRefCon,
            ref AudioUnitRenderActionFlags ioActionFlags,
-           MonoTouch.AudioToolbox.AudioTimeStamp inTimeStamp,
+           ref AudioTimeStamp inTimeStamp,
            uint inBusNumber,
            uint inNumberFrames,
            AudioBufferList ioData);
@@ -233,7 +218,7 @@ namespace MonoTouch.AudioToolbox
         [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "AudioUnitRender")]
         static extern int AudioUnitRender(IntPtr inUnit,
             ref AudioUnitRenderActionFlags ioActionFlags,
-            AudioTimeStamp inTimeStamp,
+            ref AudioTimeStamp inTimeStamp,
             UInt32 inOutputBusNumber,
             UInt32 inNumberFrames,
             AudioBufferList ioData
