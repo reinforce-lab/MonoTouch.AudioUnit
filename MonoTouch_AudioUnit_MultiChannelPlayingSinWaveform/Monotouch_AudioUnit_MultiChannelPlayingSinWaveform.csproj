@@ -8,7 +8,7 @@
     <ProjectGuid>{FEAD8552-5EA3-45C8-8DBE-BBA24397671F}</ProjectGuid>
     <ProjectTypeGuids>{E613F3A2-FE9C-494F-B74E-F63BCB86FEA6};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Monotouch_AudioUnit_PlayingSinWaveform</RootNamespace>
+    <RootNamespace>Monotouch_AudioUnit_MultiChannelPlayingSinWaveform</RootNamespace>
     <MainNibFile>MainWindow.xib</MainNibFile>
     <AssemblyName>Monotouch_SoundRecording</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>

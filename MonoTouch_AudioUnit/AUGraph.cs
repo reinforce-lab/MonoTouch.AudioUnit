@@ -118,6 +118,14 @@ namespace MonoTouch.AudioToolbox
             if (err != 0)
                 throw new ArgumentException(String.Format("Error code:", err));            
         }
+        public void AUGraphSetNodeInputCallback(int inDestNode, uint inDestInputNumber, AudioUnit.AURenderCallbackStrct inInputCallback)
+        {
+            int err = AUGraphSetNodeInputCallback(_auGraph,
+                inDestNode,inDestInputNumber, inInputCallback);
+            if (err != 0)
+                throw new ArgumentException(String.Format("Error code:", err));  
+        }
+
         public void Start()
         {
             AUGraphStart(_auGraph);
@@ -166,6 +174,9 @@ namespace MonoTouch.AudioToolbox
 
         [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "AUGraphAddRenderNotify")]
         static extern int AUGraphAddRenderNotify(IntPtr inGraph, AudioUnit.AURenderCallback inCallback, IntPtr inRefCon );
+
+        [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "AUGraphSetNodeInputCallback")]
+        static extern int AUGraphSetNodeInputCallback(IntPtr inUnit, Int32 inDestNode, UInt32 inDestInputNumber, AudioUnit.AURenderCallbackStrct inInputCallback);
 
         [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "AUGraphStart")]
         static extern int AUGraphStart(IntPtr inGraph);

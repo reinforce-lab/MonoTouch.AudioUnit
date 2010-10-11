@@ -36,12 +36,13 @@ namespace MonoTouch.AudioToolbox
         public enum AudioComponentType
         {
             kAudioUnitType_Output = 0x61756f75, //'auou',
+            kAudioUnitType_Mixer  = 0x61756d78, // 'aumx',
             /*
                     kAudioUnitType_MusicDevice				= 'aumu',
                     kAudioUnitType_MusicEffect				= 'aumf',
                     kAudioUnitType_FormatConverter			= 'aufc',
                     kAudioUnitType_Effect					= 'aufx',
-                    kAudioUnitType_Mixer					= 'aumx',
+                    
                     kAudioUnitType_Panner					= 'aupn',
                     kAudioUnitType_Generator				= 'augn',
                     kAudioUnitType_OfflineEffect			= 'auol'*/
@@ -51,7 +52,8 @@ namespace MonoTouch.AudioToolbox
         {
             kAudioUnitSubType_GenericOutput	= 0x67656e72,// 'genr',            
             kAudioUnitSubType_RemoteIO = 0x72696f63, //'rioc',        
-            kAudioUnitSubType_VoiceProcessingIO = 0x7670696f // 'vpio'
+            kAudioUnitSubType_VoiceProcessingIO = 0x7670696f, // 'vpio'
+            kAudioUnitSubType_MultiChannelMixer = 0x6d636d78 // 'mcmx',
         }
 
         public enum AudioComponentManufacturerType

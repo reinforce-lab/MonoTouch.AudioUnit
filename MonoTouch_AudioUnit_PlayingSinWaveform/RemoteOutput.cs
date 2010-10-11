@@ -10,6 +10,8 @@ namespace Monotouch_AudioUnit_PlayingSinWaveform
         #region Variables
         const int kAudioUnitSampleFractionBits = 24;
         readonly int _sampleRate;
+        const int _frequency = 15000;
+        const bool _isSquareWave = false;
 
         AudioComponent _component;
         AudioUnit _audioUnit;
@@ -29,7 +31,7 @@ namespace Monotouch_AudioUnit_PlayingSinWaveform
         void simulator_callback(object sender, AudioUnitEventArgs args)
         {
             // Generating sin waveform
-            double dphai = 440 * 2.0 * Math.PI / _sampleRate;
+            double dphai = _frequency * 2.0 * Math.PI / _sampleRate;
 
             // Getting a pointer to a buffer to be filled
             IntPtr outL = args.Data.mBuffers[0].mData;
@@ -44,6 +46,13 @@ namespace Monotouch_AudioUnit_PlayingSinWaveform
                 for (int i = 0; i < args.NumberFrames; i++)
                 {
                     float sample = (float)Math.Sin(_phase) / 2048;
+                    if (_isSquareWave)
+                    {
+                        if (sample > 0)
+                            sample = 1.0f / 2048.0f;
+                        else
+                            sample = -1.0f / 2048.0f;
+                    }
                     *outLPtr++ = sample;
                     *outRPtr++ = sample;
                     _phase += dphai;
@@ -56,7 +65,7 @@ namespace Monotouch_AudioUnit_PlayingSinWaveform
         void device_callback(object sender, AudioUnitEventArgs args)
         {
             // Generating sin waveform
-            double dphai = 440 * 2.0 * Math.PI / _sampleRate;
+            double dphai = _frequency * 2.0 * Math.PI / _sampleRate;
 
             // Getting a pointer to a buffer to be filled
             IntPtr outL = args.Data.mBuffers[0].mData;
@@ -71,6 +80,13 @@ namespace Monotouch_AudioUnit_PlayingSinWaveform
                 for (int i = 0; i < args.NumberFrames; i++)
                 {
                     int sample = (int)(Math.Sin(_phase) * int.MaxValue / 128); // signal waveform format is fixed-point (8.24)
+                    if (_isSquareWave)
+                    {
+                        if (sample > 0)
+                            sample = int.MaxValue / 128;
+                        else
+                            sample = -1 * int.MaxValue / 128;
+                    }
                     *outLPtr++ = sample;
                     *outRPtr++ = sample;
                     _phase += dphai;
