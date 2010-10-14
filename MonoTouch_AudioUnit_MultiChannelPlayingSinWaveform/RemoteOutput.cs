@@ -9,7 +9,7 @@ namespace Monotouch_AudioUnit_MultiChannelPlayingSinWaveform
     {        
         #region Variables        
         readonly GCHandle _handle;
-        SineWaveDef[] _waveDef;        
+        SineWaveDef[] _waveDef;
         
         AUGraph _auGraph;        
         #endregion

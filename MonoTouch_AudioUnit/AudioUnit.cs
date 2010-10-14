@@ -80,6 +80,17 @@ namespace MonoTouch.AudioToolbox
         #endregion
 
         #region Setter/Getter
+        public void SetVolume(float volume, AudioUnitScopeType scope, uint audioUnitElement)
+        {
+            int err = AudioUnitSetProperty(_audioUnit,
+                AUMultiChannelMixerIDType.kMultiChannelMixerParam_Volume,
+                scope,
+                audioUnitElement,
+                ref volume,
+                (uint)Marshal.SizeOf(volume));
+            if (err != 0)
+                throw new ArgumentException(String.Format("Error code:{0}", err));
+        }
         public void SetAudioFormat(MonoTouch.AudioToolbox.AudioStreamBasicDescription audioFormat, AudioUnitScopeType scope, uint audioUnitElement)
         {
             int err = AudioUnitSetProperty(_audioUnit,
@@ -269,6 +280,15 @@ namespace MonoTouch.AudioToolbox
             ref uint ioDataSize
             );
 
+        [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "AudioUnitSetProperty")]
+        static extern int AudioUnitSetProperty(IntPtr inUnit,
+            [MarshalAs(UnmanagedType.U4)] AUMultiChannelMixerIDType inID,
+            [MarshalAs(UnmanagedType.U4)] AudioUnitScopeType inScope,
+            [MarshalAs(UnmanagedType.U4)] uint inElement,
+            ref float val,
+            uint inDataSize
+            );
+        
         public enum AudioUnitPropertyIDType
         {
             // range (0 -> 999)
@@ -304,6 +324,21 @@ namespace MonoTouch.AudioToolbox
 	        kAudioOutputUnitProperty_HasIO					= 2006,
 	        kAudioOutputUnitProperty_StartTimestampsAtZero  = 2007	// this will also work with AUConverter
         };
+
+        public enum AUMultiChannelMixerIDType
+        {
+            kMultiChannelMixerParam_Volume = 0,
+            kMultiChannelMixerParam_Enable = 1,
+            kMultiChannelMixerParam_Pan = 2,			// -1 - 0 - 1, only valid when output is not mono
+            // relationship to mix matrix: last one in wins
+
+            // read-only
+            // these report level in dB, as do the other mixers
+            kMultiChannelMixerParam_PreAveragePower = 1000,
+            kMultiChannelMixerParam_PrePeakHoldLevel = 2000,
+            kMultiChannelMixerParam_PostAveragePower = 3000,
+            kMultiChannelMixerParam_PostPeakHoldLevel = 4000
+        }
         
         public enum AudioUnitScopeType
         {
