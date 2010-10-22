@@ -162,7 +162,13 @@ namespace MonoTouch.AudioToolbox
             int err = ExtAudioFileWriteAsync(_extAudioFile, numberFrames, data);
             if (err != 0)
                 throw new ArgumentException(String.Format("Error code:{0}", err));            
-        }         
+        }
+        public void Write(uint numberFrames, AudioBufferList data)
+        {
+            int err = ExtAudioFileWrite(_extAudioFile, numberFrames, data);
+            if (err != 0)
+                throw new ArgumentException(String.Format("Error code:{0}", err));
+        }
         #endregion
 
         #region IDisposable メンバ
@@ -182,6 +188,9 @@ namespace MonoTouch.AudioToolbox
 
         [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "ExtAudioFileWriteAsync")]
         static extern int ExtAudioFileWriteAsync(IntPtr inExtAudioFile, uint inNumberFrames, AudioBufferList ioData);
+
+        [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "ExtAudioFileWrite")]
+        static extern int ExtAudioFileWrite(IntPtr inExtAudioFile, uint inNumberFrames, AudioBufferList ioData);
 
         [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "ExtAudioFileDispose")]
         static extern int ExtAudioFileDispose(IntPtr inExtAudioFile);

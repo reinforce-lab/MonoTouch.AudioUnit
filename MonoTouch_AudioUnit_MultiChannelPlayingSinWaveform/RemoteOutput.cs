@@ -45,6 +45,8 @@ namespace Monotouch_AudioUnit_MultiChannelPlayingSinWaveform
             uint _inNumberFrames,
             AudioBufferList _ioData)
         {
+            System.Diagnostics.Debug.WriteLine("o");
+
             var handler = GCHandle.FromIntPtr(inRefCon);
             var inst = (RemoteOutput)handler.Target;
             var waveDef = inst._waveDef[_inBusNumber];

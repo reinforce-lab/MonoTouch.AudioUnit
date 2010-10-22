@@ -20,10 +20,39 @@ namespace MonoTouch.AudioToolbox
         readonly GCHandle _handle;
         readonly IntPtr _audioUnit;
         bool _isPlaying;
+        bool _renderCallbackHasBeenSet;
+        
+        event EventHandler<AudioUnitEventArgs> _renderEvent;
         #endregion
 
         #region Properties
-        public event EventHandler<AudioUnitEventArgs> RenderCallback;
+        public event EventHandler<AudioUnitEventArgs> RenderCallback          
+        {
+            add
+            {
+                if (!_renderCallbackHasBeenSet)
+                {
+                    _renderCallbackHasBeenSet = true;
+
+                    var callbackStruct = new AURenderCallbackStrct();
+                    callbackStruct.inputProc = renderCallback; // setting callback function            
+                    callbackStruct.inputProcRefCon = GCHandle.ToIntPtr(_handle); // a pointer that passed to the renderCallback (IntPtr inRefCon) 
+                    int err = AudioUnitSetProperty(_audioUnit,
+                        AudioUnitPropertyIDType.kAudioUnitProperty_SetRenderCallback,
+                        AudioUnitScopeType.kAudioUnitScope_Input,
+                        0, // 0 == speaker                
+                        callbackStruct,
+                        (uint)Marshal.SizeOf(callbackStruct));
+                    if (err != 0)
+                        throw new ArgumentException(String.Format("Error code: {0}", err)); 
+                }
+                _renderEvent += value;
+            }
+            remove
+            {
+                _renderEvent -= value;
+            }
+        }
         //public event EventHandler<AudioUnitEventArgs> InputCallback;
         public bool IsPlaying { get { return _isPlaying; } }
         #endregion
@@ -33,19 +62,9 @@ namespace MonoTouch.AudioToolbox
         {
             _audioUnit = handler;
             _isPlaying = false;
+            _renderCallbackHasBeenSet = false;
 
             _handle = GCHandle.Alloc(this);
-            var callbackStruct = new AURenderCallbackStrct();
-            callbackStruct.inputProc = renderCallback; // setting callback function            
-            callbackStruct.inputProcRefCon = GCHandle.ToIntPtr(_handle); // a pointer that passed to the renderCallback (IntPtr inRefCon) 
-            int err = AudioUnitSetProperty(_audioUnit,
-                AudioUnitPropertyIDType.kAudioUnitProperty_SetRenderCallback,
-                AudioUnitScopeType.kAudioUnitScope_Input,
-                0, // 0 == speaker                
-                callbackStruct,
-                (uint)Marshal.SizeOf(callbackStruct));
-            if (err != 0)
-                throw new ArgumentException(String.Format("Error code: {0}", err));           
         }
         #endregion
 
@@ -64,7 +83,7 @@ namespace MonoTouch.AudioToolbox
             var inst = (AudioUnit)handler.Target;
             
             // evoke event handler with an argument
-            if (inst.RenderCallback != null) 
+            if (inst._renderEvent != null) 
             {
                 var args = new AudioUnitEventArgs(
                     _ioActionFlags,
@@ -72,7 +91,7 @@ namespace MonoTouch.AudioToolbox
                     _inBusNumber,
                     _inNumberFrames,
                     _ioData);
-                inst.RenderCallback(inst, args);
+                inst._renderEvent(inst, args);
             }
 
             return 0; // noerror
@@ -82,12 +101,12 @@ namespace MonoTouch.AudioToolbox
         #region Setter/Getter
         public void SetVolume(float volume, AudioUnitScopeType scope, uint audioUnitElement)
         {
-            int err = AudioUnitSetProperty(_audioUnit,
-                AUMultiChannelMixerIDType.kMultiChannelMixerParam_Volume,
+            int err = AudioUnitSetParameter(_audioUnit,
+                (uint)AUMultiChannelMixerIDType.kMultiChannelMixerParam_Volume,
                 scope,
                 audioUnitElement,
-                ref volume,
-                (uint)Marshal.SizeOf(volume));
+                volume,
+                0);                
             if (err != 0)
                 throw new ArgumentException(String.Format("Error code:{0}", err));
         }
@@ -279,16 +298,25 @@ namespace MonoTouch.AudioToolbox
             ref uint flag,
             ref uint ioDataSize
             );
-
-        [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "AudioUnitSetProperty")]
-        static extern int AudioUnitSetProperty(IntPtr inUnit,
-            [MarshalAs(UnmanagedType.U4)] AUMultiChannelMixerIDType inID,
+        /*     
+         * 
+extern OSStatus
+AudioUnitSetParameter(				AudioUnit					inUnit,
+									AudioUnitParameterID		inID,
+									AudioUnitScope				inScope,
+									AudioUnitElement			inElement,
+									AudioUnitParameterValue		inValue,
+									UInt32						inBufferOffsetInFrames)          
+         */
+        [DllImport(MonoTouch.Constants.AudioToolboxLibrary, EntryPoint = "AudioUnitSetParameter")]
+        static extern int AudioUnitSetParameter(IntPtr inUnit,
+            [MarshalAs(UnmanagedType.U4)] UInt32 inID, 
             [MarshalAs(UnmanagedType.U4)] AudioUnitScopeType inScope,
-            [MarshalAs(UnmanagedType.U4)] uint inElement,
-            ref float val,
-            uint inDataSize
+            [MarshalAs(UnmanagedType.U4)] UInt32 inElement, 
+            float inValue,
+            uint inBufferOffsetInFrames
             );
-        
+
         public enum AudioUnitPropertyIDType
         {
             // range (0 -> 999)
