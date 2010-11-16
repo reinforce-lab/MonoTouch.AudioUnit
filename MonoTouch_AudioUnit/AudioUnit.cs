@@ -78,6 +78,7 @@ namespace MonoTouch.AudioToolbox
             uint _inNumberFrames,
             AudioBufferList _ioData)
         {
+            //System.Diagnostics.Debug.WriteLine(_ioActionFlags);
             // getting audiounit instance
             var handler = GCHandle.FromIntPtr(inRefCon);
             var inst = (AudioUnit)handler.Target;
@@ -190,7 +191,7 @@ namespace MonoTouch.AudioToolbox
         }
         public void Render(AudioUnitRenderActionFlags flags, AudioTimeStamp timeStamp, UInt32 outputBusnumber, UInt32 numberFrames, AudioBufferList data)
         {
-            int err = AudioUnitRender(_audioUnit,
+            int err = AudioUnitRender (_audioUnit,
                 ref flags,
                 ref timeStamp,
                 outputBusnumber,

@@ -21,6 +21,8 @@ namespace Monotouch_AudioUnit_MicMonitoring {
 		
 		private MonoTouch.UIKit.UIButton __mt__stopButton;
 		
+		private MonoTouch.UIKit.UILabel __mt__label;
+		
 		#pragma warning disable 0169
 		[MonoTouch.Foundation.Connect("view")]
 		private MonoTouch.UIKit.UIView view {
@@ -55,6 +57,18 @@ namespace Monotouch_AudioUnit_MicMonitoring {
 			set {
 				this.__mt__stopButton = value;
 				this.SetNativeField("_stopButton", value);
+			}
+		}
+		
+		[MonoTouch.Foundation.Connect("_label")]
+		private MonoTouch.UIKit.UILabel _label {
+			get {
+				this.__mt__label = ((MonoTouch.UIKit.UILabel)(this.GetNativeField("_label")));
+				return this.__mt__label;
+			}
+			set {
+				this.__mt__label = value;
+				this.SetNativeField("_label", value);
 			}
 		}
 	}

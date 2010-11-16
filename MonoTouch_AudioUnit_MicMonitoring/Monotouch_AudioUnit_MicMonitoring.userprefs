@@ -1,8 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" ctype="Workspace" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../MonoTouch_AudioUnit/AudioUnit.cs" ctype="Workbench">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../MonoTouch_AudioUnit/AudioUnit.cs">
     <Files>
-      <File FileName="../MonoTouch_AudioUnit/AudioUnit.cs" Line="179" Column="21" />
+      <File FileName="../MonoTouch_AudioUnit/AudioUnit.cs" Line="181" Column="14" />
+      <File FileName="RemoteOutput.cs" Line="104" Column="38" />
+      <File FileName="MainView.xib.cs" Line="13" Column="1" />
+      <File FileName="MainView.xib.designer.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -30,7 +33,7 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches ctype="PinnedWatchStore">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="../MonoTouch_AudioUnit_PlayingSinWaveform/RemoteOutput.cs" line="124" offsetX="597" offsetY="1845" expression="ostype_val" liveUpdate="False" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
 </Properties>

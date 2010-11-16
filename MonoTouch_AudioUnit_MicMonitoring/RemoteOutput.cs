@@ -8,35 +8,42 @@ namespace Monotouch_AudioUnit_MicMonitoring
     class RemoteOutput : IDisposable
     {
         #region Variables
+        const int _sampleRate = 44100;
+        const float _lpf_constant = (1 / (float)(4 * 1024));
+
         const int kAudioUnitSampleFractionBits = 24;
-        readonly int _sampleRate;
 
         AudioComponent _component;
-        AudioUnit _audioUnit;        
+        AudioUnit _audioUnit;
+
+        float _sigLevel, _dcLevel;
+        #endregion
+
+        #region Properties
+        public float SignalLevel
+        {
+            get
+            {
+                lock (this)
+                {
+                    return _sigLevel;
+                }
+            }
+        }
         #endregion
 
         #region Constructor
         public RemoteOutput()
-        {
-            _sampleRate = 44100;
+        {            
+            _sigLevel = 0;
+            _dcLevel  = 0;
 
             prepareAudioUnit();
         }
         #endregion
 
         #region Private methods
-        void simulator_callback(object sender, AudioUnitEventArgs args)
-        {
-            // getting microphone
-            _audioUnit.Render(args.ActionFlags, 
-                args.TimeStamp,
-                1, // Remote input
-                args.NumberFrames,
-                args.Data);
-        }
-        // AudioUnit callback function uses this method to use instance variables. 
-        // In the static callback method is not convienient because instance variables can not used.
-        void device_callback(object sender, AudioUnitEventArgs args)
+        void _callback(object sender, AudioUnitEventArgs args)
         {
             // getting microphone
             _audioUnit.Render(args.ActionFlags,
@@ -44,6 +51,34 @@ namespace Monotouch_AudioUnit_MicMonitoring
                 1, // Remote input
                 args.NumberFrames,
                 args.Data);
+
+            // Getting a pointer to a buffer to be filled
+            IntPtr outL = args.Data.mBuffers[0].mData;
+            IntPtr outR = args.Data.mBuffers[1].mData;
+
+            // level monitor            
+            float diff;
+            float sig_level = _sigLevel;
+            unsafe
+            {
+                var outLPtr = (Int32*)outL.ToPointer();
+                var outRPtr = (Int32*)outR.ToPointer();
+                for (int i = 0; i < args.NumberFrames; i++)
+                {
+                    float val = *outLPtr;
+                    
+                    _dcLevel += (val - _dcLevel) * _lpf_constant;
+                    diff = Math.Abs(val - _dcLevel);
+                    sig_level += (diff - sig_level) * _lpf_constant;
+                    
+                    outLPtr++;
+                }
+            }
+            //System.Diagnostics.Debug.WriteLine(String.Format("AD{0}: DC:{1}", sig_level, _dcLevel));
+            lock (this)
+            {
+                _sigLevel = sig_level;
+            }
         }
         void prepareAudioUnit()
         {
@@ -100,11 +135,13 @@ namespace Monotouch_AudioUnit_MicMonitoring
                 );
 
             // setting callback
+            /*
             if (MonoTouch.ObjCRuntime.Runtime.Arch == MonoTouch.ObjCRuntime.Arch.SIMULATOR)
                 _audioUnit.RenderCallback += new EventHandler<AudioUnitEventArgs>(simulator_callback);
             else
                 _audioUnit.RenderCallback += new EventHandler<AudioUnitEventArgs>(device_callback);
-
+            */
+            _audioUnit.RenderCallback += new EventHandler<AudioUnitEventArgs>(_callback);
             // initialize
             _audioUnit.Initialize();
         }

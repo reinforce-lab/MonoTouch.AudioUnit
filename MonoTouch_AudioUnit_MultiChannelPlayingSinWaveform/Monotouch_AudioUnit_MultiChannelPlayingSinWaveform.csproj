@@ -26,7 +26,6 @@
     <MtouchLink>None</MtouchLink>
     <MtouchI18n />
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <MtouchSdkVersion>4.2</MtouchSdkVersion>
     <MtouchMinimumOS>3.1</MtouchMinimumOS>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">

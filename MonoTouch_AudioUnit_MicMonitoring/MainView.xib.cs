@@ -9,6 +9,7 @@ namespace Monotouch_AudioUnit_MicMonitoring
     {
         #region Variables
         RemoteOutput _player;
+        NSTimer _timer;
         #endregion
 
         #region Constructors
@@ -59,6 +60,14 @@ namespace Monotouch_AudioUnit_MicMonitoring
 
             _playButton.Enabled = true;
             _stopButton.Enabled = false;
+
+            _timer = NSTimer.CreateRepeatingTimer(TimeSpan.FromMilliseconds(200),
+                           delegate
+                           {
+                               _label.Text = _player.SignalLevel.ToString("E");
+                           }
+                           );
+            NSRunLoop.Current.AddTimer(_timer, "NSDefaultRunLoopMode");
         }
         public override void ViewDidUnload()
         {

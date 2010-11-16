@@ -12,7 +12,8 @@ namespace MonoTouch.AudioToolbox
         public static AudioStreamBasicDescription AUCanonicalASBD(double sampleRate, int channel)
         {
             // setting AudioStreamBasicDescription
-            int AudioUnitSampleTypeSize = (MonoTouch.ObjCRuntime.Runtime.Arch == MonoTouch.ObjCRuntime.Arch.SIMULATOR) ? sizeof(float) : sizeof(int);
+            //int AudioUnitSampleTypeSize = (MonoTouch.ObjCRuntime.Runtime.Arch == MonoTouch.ObjCRuntime.Arch.SIMULATOR) ? sizeof(float) : sizeof(int);
+            int AudioUnitSampleTypeSize = 4;
             AudioStreamBasicDescription audioFormat = new AudioStreamBasicDescription()
             {
                 SampleRate = sampleRate,
