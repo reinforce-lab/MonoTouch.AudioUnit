@@ -82,7 +82,7 @@ namespace Monotouch_SoundRecording
 
             var buffer = (AudioQueueBuffer)System.Runtime.InteropServices.Marshal.PtrToStructure(e.IntPtrBuffer, typeof(AudioQueueBuffer));
             _audioFile.WritePackets(false, _startingPacketCount, buffer.PacketDescriptions, buffer.AudioData, (int)buffer.AudioDataByteSize);
-            _startingPacketCount += _numPacketsToWrite;
+            _startingPacketCount += e.PacketDescriptions.Length;
             // adding a queue                    
             _queue.EnqueueBuffer(e.IntPtrBuffer, _bufferByteSize, e.PacketDescriptions);            
         }       
